@@ -1,0 +1,395 @@
+---
+title: "fish_consuption"
+author: "S/17/436"
+date: "2023-06-17"
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Required Packages
+
+```{r}
+library(tidyverse)
+library(tinytex)
+library(janitor)
+```
+
+### Import the data set
+
+```{r}
+fish_consumption <- read.csv("../data/data.csv")
+head(fish_consumption)
+```
+
+### Rename the data set
+
+```{r}
+fish_consumption<- clean_names(dat = fish_consumption, case = "snake") 
+glimpse(fish_consumption)
+```
+
+```{r}
+names(fish_consumption)
+```
+
+```{r}
+fish_consumption <- fish_consumption %>%
+rename(Division = x1_grama_niladhari_division,
+       Gender = x2_gender,
+       Age = x3_age_of_the_child_years,
+       Weight = x4_weight_of_the_child_kg,
+       Academic_performance = x5_how_would_you_rate_your_child_s_overall_academic_performances,
+       number_of_family_members = x6_number_of_people_who_live_in_your_household,
+       animal_protein =  x7_what_animal_protein_sources_do_you_give_your_child_the_most,
+       seafood_availability = x8_is_seafood_available_frequently_in_your_area,
+       eat_freshwater_fish = x9_does_your_child_eat_freshwater_fish,
+       fish_type = x9_a_if_yes_mention_the_most_preferred_freshwater_fish_type_of_the_child,
+       reason = x9_b_if_no_what_is_the_reason,
+       improve_consumption = x9_c_if_your_child_hesitates_to_eat_freshwater_fish_what_are_the_methods_you_used_to_encourage_improve_their_consumption_usually,
+       reason_to_prefer = x10_why_does_your_child_prefer_freshwater_fish,
+       reason_to_include =  x11_what_is_the_reason_for_including_freshwater_fish_in_your_child_s_diet,
+       consumption_changing = x12_has_the_amount_of_freshwater_fish_your_family_consumed_changed_over_the_last_3_years,
+       reason_to_change = x13_if_changed_what_is_the_reason,
+       healthcare_guidance = x14_have_you_ever_received_any_guidance_or_recommendation_from_a_healthcare_professional_regarding_freshwater_fish_consumption_of_your_child,
+       limit_the_consumption = x15_have_you_ever_limited_your_child_s_freshwater_fish_consumption_due_to_any_reason,
+       reason_to_limit_change = x16_if_yes_what_is_the_reason,
+       freshwater_fish_nut = x17_freshwater_fish_is_a_healthy_source_of_animal_protein_and_provide_other_important_nutrients_for_children,
+       time_range =  x18_how_often_does_your_child_eat_freshwater_fish,
+       avg_amount = x19_when_the_child_eats_freshwater_fish_what_is_the_average_amount_per_day,
+       num_of_pieces = x20_how_many_pieces_the_child_eats_per_meal,
+       preparing_way = x21_what_is_your_child_s_favorite_way_of_preparing_freshwater_fish,
+       amount_permonth_Tilapia = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_tilapia,
+       amount_permonth_Korali = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_korali,
+       amount_permonth_Hunga = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_hunga,
+       amount_permonth_Loolla = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_loolla,
+       amount_permonth_Pethiya = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_pethiya,
+       amount_permonth_Aandha = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_aandha,
+       amount_permonth_Kawayya = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_kawayya,
+       amount_permonth_Ankutta = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_ankutta,
+       amount_permonth_Magura = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_magura,
+       amount_permonth_Kanradu.issa = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_karadu_issa,
+       amount_permonth_Crap.spp = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_carp_spp,
+       amount_permonth_Other = x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_other,
+       other_species = x22_b_if_you_consume_fish_other_than_the_above_mentioned_species_please_mention_it_here,
+       processed_dried_fish = x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_dried_fish,
+       processed_smoked_fish = x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_smoked_fish,
+       processed_other = x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_other,
+       other_fish_product = x23_b_if_you_consume_fish_product_other_than_the_above_mentioned_processed_product_please_mention_it_here,
+       increasing_barriers = x24_what_are_the_barriers_to_increasing_freshwater_fish_consumption,
+       buying_place = x25_where_do_you_usually_get_the_fish_from,
+       allergies = x26_have_you_noticed_any_allergies_symptoms_of_your_child_after_eating_freshwater_fish,
+       allergy_species = x27_if_yes_please_mention_the_fish_species_s,
+       symptoms = x28_if_yes_which_symptoms_have_you_observed_you_can_select_more_than_one_option)
+      
+
+glimpse(fish_consumption)
+```
+
+### View data set after the rename
+
+```{r}
+view(fish_consumption)
+head(fish_consumption)
+attach(fish_consumption)
+```
+
+### Number of observations
+
+```{r}
+dim(fish_consumption)
+```
+
+```{r}
+#This data set contains 384 obseravtions and 46 columns.
+```
+
+```{r}
+colSums(is.na(fish_consumption))
+```
+
+```{r}
+#Looking good! there are no any NA values in the data set. 
+```
+
+### Summary of the data
+
+```{r}
+summary(fish_consumption)
+```
+
+### Number of children in relevant divisions
+
+```{r}
+fish_consumption %>%
+ggplot(mapping = aes(x = Division)) +
+geom_bar() +
+ylab("number of children") +
+xlab("grama niladhari division") +
+coord_flip()
+```
+
+```{r}
+#Majority of the children who come up with this survey in Pallankulama. 
+```
+
+### Comparison between Male and Female students
+
+```{r}
+fish_consumption %>%
+ggplot(mapping = aes(x = Gender)) +
+geom_bar() +
+scale_x_discrete("Gender", labels = c("Male","Female")) +
+
+ylab("number of children") +
+theme_classic()
+```
+
+```{r}
+#Female students are highly responsed to this survey compare it with to male students. 
+```
+
+### Academic Performance of both Male and Female students
+
+```{r}
+fish_consumption %>%
+ggplot(mapping = aes(x = Gender))+
+geom_bar(aes(fill = Academic_performance), position = "dodge") +
+scale_x_discrete("Gender", labels = c("Male","Female") ) +
+labs(x = "Gender", y = "count",fill='Accademic_performance') +
+theme_bw()
+```
+
+```{r}
+#Academic performance of both female and male students are looking good. But academic performance of male students are little bit lower than to the female students. 
+```
+
+### Sea food availability of the divisions
+
+```{r}
+fish_consumption %>%
+ggplot(mapping = aes(x = seafood_availability))+
+geom_bar(aes(fill = Division), position = "dodge") +
+scale_x_discrete("seafood_availability", labels = c("Yes","No","Maybe","Not mentioned") ) +
+labs(x = "seafood_availability", y = "count",fill='Division') +
+theme_bw()
+```
+
+### Fish type according to the division
+
+```{r}
+#Omit the data who didn't mentioned the fish type that contains in their divisions
+fish_consumption_1 <- filter(fish_consumption, fish_type != "Not mentioned")
+                    select(fish_consumption_1, Division, fish_type)
+    
+table_1 <- table(fish_type, Division)
+table_1
+
+ggplot(fish_consumption_1, aes(x = fish_type)) +
+  geom_bar() +
+  xlab("fish type") +
+  ylab("Frequency") +
+  ggtitle("Bar Plot for ythe fish_type") + scale_x_discrete(guide = guide_axis(n.dodge=5))
+```
+
+### The relationship between Age and Weight
+
+```{r}
+#eliminate the data who not mentioned their weights
+fish_consumption_2 <- filter(fish_consumption, Weight != "not mentioned")
+                         select(fish_consumption_2, Age, Weight)
+                    
+#Convert Age and Weight as numeric values
+{fish_consumption_2$Age <- as.numeric(fish_consumption_2$Age)
+fish_consumption_2$Weight <- as.numeric(fish_consumption_2$Weight)}
+                    
+#Plot Age aganist the Weight                   
+plot(fish_consumption_2$Age, fish_consumption_2$Weight, xlab = "Age", ylab = "Weight", main = "Age vs. Weight")
+
+#Calculate the correlation coefficient
+correlation <- cor(fish_consumption_2$Age, fish_consumption_2$Weight)
+correlation
+
+```
+
+```{r}
+#By looking at the plot and correlation coefficient, there is a modarate positive relationship between Age and Weight of the students in this division. 
+```
+
+### Eat or not freshwater fish
+
+```{r}
+
+# Calculate the frequencies of "yes" and "no"
+counts <- table(eat_freshwater_fish)
+
+# Assign colors to each category
+colors <- c("red", "green")
+
+# Create a pie chart with counts and colored segments
+pie(counts, labels = paste(names(counts), "(", counts, ")"), 
+    main = "Pie chart for the preference of freshwater fish", col = colors)
+
+
+```
+
+### Sea food availability
+
+```{r}
+
+# Calculate the frequencies of each state
+availability_counts <- table(seafood_availability)
+
+# Create a stacked bar plot
+barplot(availability_counts, col = rainbow(length(availability_counts)), 
+        xlab = "Availabilty", ylab = "Count", main = "Sea food availability of this division")
+
+```
+
+### Sea food buying places
+
+```{r}
+# Calculate the frequencies of each buying place
+buying_place_counts <- table(buying_place)
+
+# Create a bar plot
+barplot(buying_place_counts, col = rainbow(length(buying_place_counts)), 
+        xlab = "Buying Place", ylab = "Count", main = "Buying Places of Seafood")
+```
+
+### Allergy distribution
+
+```{r}
+# Calculate the frequencies of each response
+allergy_counts <- table(allergies)
+
+# Create a horizontal bar plot
+barplot(allergy_counts, horiz = FALSE, col = c("green", "red","yellow"),
+        xlab = "Count", ylab = "Allergy Status", main = "Allergy Distribution")
+```
+
+### Identify the Allergy Species
+
+```{r}
+#Omit the data who didn't mentioned the fish type that contains in their divisions
+fish_consumption_3 <- filter(fish_consumption, allergies == "Yes")
+                    select(fish_consumption_3, allergies, allergy_species, symptoms)
+    
+table_3 <- table(allergies, allergy_species)
+table_3
+
+table_4 <- table(allergies, allergy_species, symptoms)
+table_4
+```
+
+```{r}
+#The one and olny allergy species is Hunga
+```
+
+### Increasing barriers
+
+```{r}
+# Calculate the frequencies of each buying place
+barriers_counts <- table(increasing_barriers)
+
+# Create a bar plot
+barplot(barriers_counts, col = rainbow(length(barriers_counts)), 
+        xlab = "Increasing barriers", ylab = "Count", main = "Increasing barriers")
+```
+
+### Reasons
+
+```{r}
+ggplot(fish_consumption, aes(x=reorder(reason, reason, function(x)-length(x)))) +
+  geom_bar(fill='pink') + 
+  labs(x='Reason') +
+  scale_x_discrete(guide = guide_axis(n.dodge=5))
+```
+
+### Avarage freshwater fish consumption vs Time range
+
+```{r}
+counts <- table(fish_consumption$time_range, fish_consumption$avg_amount)
+mosaicplot(counts, xlab='Time range', ylab='Avarage amount per day',main='Avarage freshwater fish consumption vs Time range', col='orange')
+```
+
+### Why does the child prefer freshwater fish ?
+
+```{r}
+# Calculate the frequencies of each reason to prefer
+reason_to_prefer_counts <- table(reason_to_prefer)
+
+# Create a bar plot
+barplot(reason_to_prefer_counts, col = rainbow(length(reason_to_prefer_counts)), 
+        xlab = "child's prefer", ylab = "Count", main = "Why does the child prefer freshwater fish ?")
+```
+
+### Amount of freshwater fish consumed change over the last 3 years
+
+```{r}
+ggplot(fish_consumption, aes(x = consumption_changing)) +
+  geom_bar() +
+  xlab("Changes of consumption") +
+  ylab("Frequency") +
+  ggtitle("Amount of freshwater fish consumed change over the last 3 years")
+```
+
+### Amount of freshwater fish consumed change over the last 3 years
+
+```{r}
+# Create a list of values for each category
+values <- table(consumption_changing)
+
+# Calculate the percentages
+percentages = 100 * values / sum(values)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values), y=percentages, labels=paste0(percentages, "%"), cex=0.5)
+```
+
+### Average freshwater fish consumption vs Time range
+
+```{r}
+counts <- table(fish_consumption$reason_to_change,fish_consumption$consumption_changing)
+
+mosaicplot(counts, xlab='Time range', ylab='Average amount per day',main='Average freshwater fish consumption vs Time range', col='orange')
+```
+
+### Decremented of the fish consumption and reasons 
+
+```{r}
+fish_consumption_3 <- filter(fish_consumption, consumption_changing == "Decreased")
+                         select(fish_consumption_3, consumption_changing, reason_to_change)
+                         
+table_5 <- table(fish_consumption_3$consumption_changing, fish_consumption_3$reason_to_change)                        
+table_5
+```
+
+### Incremented of the fish consumption and reasons 
+
+```{r}
+fish_consumption_4 <- filter(fish_consumption, consumption_changing == "Increased")
+                         select(fish_consumption_4, consumption_changing, reason_to_change)
+                         
+table_6 <- table(fish_consumption_4$consumption_changing, fish_consumption_4$reason_to_change)                        
+table_6
+```
+
+### 
+Most popular cooking type among students
+
+```{r}
+# Calculate the frequencies of each preparing way
+preparing_way_counts <- table(preparing_way)
+
+# Create a bar plot
+barplot(preparing_way_counts, col = rainbow(length(preparing_way_counts)), 
+        xlab = "child's prefer", ylab = "Frequency", main = "Most popular preparing type among students")
+```

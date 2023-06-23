@@ -1,0 +1,2773 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={fish\_consuption},
+  pdfauthor={S/17/436},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{fish\_consuption}
+\author{S/17/436}
+\date{2023-06-17}
+
+\begin{document}
+\maketitle
+
+\hypertarget{required-packages}{%
+\subsubsection{Required Packages}\label{required-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.2     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.2     v tibble    3.2.1
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tinytex)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'janitor'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     chisq.test, fisher.test
+\end{verbatim}
+
+\hypertarget{import-the-data-set}{%
+\subsubsection{Import the data set}\label{import-the-data-set}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"../data/data.csv"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X1..Grama.Niladhari.Division X2..Gender X3..Age.of.the.child..Years.
+## 1                      rambewa     female                           10
+## 2             pandukabhayapura       male                            5
+## 3                      rambewa       male                            8
+## 4          diviya udabendawewa       male                            5
+## 5                  sadamalgama       male                            4
+## 6                  sadamalgama     female                            7
+##   X4..Weight.of.the.child..kg..
+## 1                            28
+## 2                          21.4
+## 3                            35
+## 4                            18
+## 5                           6.5
+## 6                            21
+##   X5..How.would.you.rate.your.child.s.Overall.Academic.performances.....
+## 1                                                              Very Good
+## 2                                                                   Fair
+## 3                                                              Excellent
+## 4                                                                   Good
+## 5                                                                   Good
+## 6                                                                   Fair
+##   X6..Number.of.people.who.live.in.your.household
+## 1                                               5
+## 2                                               4
+## 3                                               4
+## 4                                               7
+## 5                                               7
+## 6                                               5
+##   X7..What.animal.protein.sources.do.you.give.your.child.the.most.
+## 1      Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+## 2                            Meat (Chicken,Beef, Pork, etc.), Eggs
+## 3      Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+## 4                                                   Dairy Products
+## 5                                                   Dairy Products
+## 6      Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+##   X8..Is.seafood.available.frequently.in.your.area.
+## 1                                                No
+## 2                                               Yes
+## 3                                                No
+## 4                                             Maybe
+## 5                                               Yes
+## 6                                             Maybe
+##   X9..Does.your.child.eat.freshwater.fish.
+## 1                                      Yes
+## 2                                      Yes
+## 3                                      Yes
+## 4                                       No
+## 5                                      Yes
+## 6                                      Yes
+##   X9...A..If.Yes..mention.the.most.preferred.freshwater.fish.type.of.the.child.
+## 1                                                                       Tilapia
+## 2                                                                 Not mentioned
+## 3                                                                        Loolla
+## 4                                                                 Not mentioned
+## 5                                                                      Tilapia 
+## 6                                                                      Tilapia 
+##   X9...B..If.no..what.is.the.reason.
+## 1                                   
+## 2                                   
+## 3                                   
+## 4    Dislike of the taste or texture
+## 5                                   
+## 6                                   
+##   X9...C..If.your.child.hesitates.to.eat.freshwater.fish..what.are.the.methods.you.used.to.encourage.improve.their.consumption.usually.
+## 1                         Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 2                                                                                                                                      
+## 3                         Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 4                                                                                                       Serve with their favorite foods
+## 5                         Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 6                                                                                                                                      
+##   X10..Why.does.your.child.prefer.freshwater.fish.
+## 1                 Awareness of nutritional quality
+## 2                                  As a food habit
+## 3                                     Milder taste
+## 4                                                 
+## 5                                  As a food habit
+## 6                    Milder taste, As a food habit
+##   X11..What.is.the.reason.for.including.freshwater.fish.in.your.child.s.diet.
+## 1         Nutritional benefits, Health benefits, Freshness, Readily available
+## 2                                                 Nutritional benefits, Taste
+## 3                                                        Nutritional benefits
+## 4                                                                            
+## 5                                                        Nutritional benefits
+## 6                                       Nutritional benefits, Health benefits
+##   X12..Has.the.amount.of.freshwater.fish.your.family..consumed.changed.over.the.last.3.years.
+## 1                                                                                   No change
+## 2                                                                                   Decreased
+## 3                                                                                   No change
+## 4                                                                               Not mentioned
+## 5                                                                                   Decreased
+## 6                                                                                   Decreased
+##       X13..If.changed..what.is.the.reason.
+## 1                                         
+## 2 High consumption of other animal sources
+## 3                                         
+## 4                                         
+## 5                               Expensive 
+## 6                               Inflation 
+##   X14..Have.you.ever.received.any.guidance.or.recommendation.from.a.healthcare.professional.regarding.freshwater.fish.consumption.of.your.child.
+## 1                                                                                                                                             No
+## 2                                                                                                                                             No
+## 3                                                                                                                                             No
+## 4                                                                                                                                  Not mentioned
+## 5                                                                                                                                             No
+## 6                                                                                                                                             No
+##   X15..Have.you.ever.limited.your.child.s.freshwater.fish.consumption.due.to.any.reason.
+## 1                                                                                     No
+## 2                                                                                     No
+## 3                                                                                     No
+## 4                                                                                       
+## 5                                                                                  Maybe
+## 6                                                                                     No
+##                X16..If.Yes..what.is.the.reason.
+## 1                                              
+## 2                                              
+## 3                                              
+## 4                                              
+## 5 Due to some health conditions of the children
+## 6                                              
+##   X17...Freshwater.fish.is.a.healthy.source.of.animal.protein.and.provide.other.important.nutrients.for.children..
+## 1                                                                                                   Strongly agree
+## 2                                                                                                            Agree
+## 3                                                                                                            Agree
+## 4                                                                                                                 
+## 5                                                                                                            Agree
+## 6                                                                                                            Agree
+##   X18..How.often.does.your.child.eat.freshwater.fish.
+## 1                                        Twice a week
+## 2                                    Every few months
+## 3                                    3-4 times a week
+## 4                                                    
+## 5                                         Once a week
+## 6                                        Twice a week
+##   X19..When.the.child.eats.freshwater.fish..what.is.the.average.amount.per.day.
+## 1                                                                     Two meals
+## 2                                                                     Two meals
+## 3                                                                     Two meals
+## 4                                                                              
+## 5                                                                      One meal
+## 6                                                                     Two meals
+##   X20..How.many.pieces.the.child.eats.per.meal.
+## 1                                             2
+## 2                                             2
+## 3                                             2
+## 4                                              
+## 5                                             2
+## 6                                             2
+##     X21.What.is.your.child.s.favorite.way.of.preparing.freshwater.fish.
+## 1                                                            Fried fish
+## 2                                 Curry (With coconut milk), Fried fish
+## 3                                             Curry (With coconut milk)
+## 4                                                                      
+## 5                                      Fish cutlet, Patties, Sandwiches
+## 6 Curry (With coconut milk), Fried fish, Fish cutlet/patties/sandwiches
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Tilapia.
+## 1                                                                                        Less than 2 kg
+## 2                                                                                        Less than 2 kg
+## 3                                                                                        Less than 2 kg
+## 4                                                                                                      
+## 5                                                                                        More than 6 kg
+## 6                                                                                        Less than 2 kg
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Korali.
+## 1                                                                                                     
+## 2                                                                                                     
+## 3                                                                                        No purchasing
+## 4                                                                                                     
+## 5                                                                                                     
+## 6                                                                                       Less than 2 kg
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Hunga.
+## 1                                                                                                    
+## 2                                                                                                    
+## 3                                                                                       No purchasing
+## 4                                                                                                    
+## 5                                                                                                    
+## 6                                                                                                    
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Loolla.
+## 1                                                                                                     
+## 2                                                                                                     
+## 3                                                                                       Less than 2 kg
+## 4                                                                                                     
+## 5                                                                                                     
+## 6                                                                                       Less than 2 kg
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Pethiya.
+## 1                                                                                                      
+## 2                                                                                                      
+## 3                                                                                         No purchasing
+## 4                                                                                                      
+## 5                                                                                                      
+## 6                                                                                                      
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Aandha.
+## 1                                                                                                     
+## 2                                                                                                     
+## 3                                                                                        No purchasing
+## 4                                                                                                     
+## 5                                                                                                     
+## 6                                                                                                     
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Kawayya.
+## 1                                                                                                      
+## 2                                                                                                      
+## 3                                                                                         No purchasing
+## 4                                                                                                      
+## 5                                                                                                      
+## 6                                                                                                      
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Ankutta.
+## 1                                                                                                      
+## 2                                                                                                      
+## 3                                                                                         No purchasing
+## 4                                                                                                      
+## 5                                                                                                      
+## 6                                                                                                      
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Magura.
+## 1                                                                                                     
+## 2                                                                                                     
+## 3                                                                                        No purchasing
+## 4                                                                                                     
+## 5                                                                                                     
+## 6                                                                                                     
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Karadu.issa.
+## 1                                                                                                          
+## 2                                                                                                          
+## 3                                                                                             No purchasing
+## 4                                                                                                          
+## 5                                                                                                          
+## 6                                                                                                          
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Carp.Spp..
+## 1                                                                                                        
+## 2                                                                                                        
+## 3                                                                                           No purchasing
+## 4                                                                                                        
+## 5                                                                                                        
+## 6                                                                                                        
+##   X22.What.type.of.freshwater.fish.usually.purchase.in.your.household.and.how.much.per.month...Other.
+## 1                                                                                                    
+## 2                                                                                                    
+## 3                                                                                       No purchasing
+## 4                                                                                                    
+## 5                                                                                                    
+## 6                                                                                                    
+##   X22...b..If.you.consume.fish.other.than.the.above.mentioned.species..please.mention.it.here.
+## 1                                                                                             
+## 2                                                                                             
+## 3                                                                                             
+## 4                                                                                             
+## 5                                                                                             
+## 6                                                                                             
+##   X23.What.are.the.most.frequently.purchasing.processed.freshwater.fish.products.in.your.household.per.month...Dried.fish.
+## 1                                                                                                         Less than 0.5 kg
+## 2                                                                                                                         
+## 3                                                                                                               0.5 - 1 kg
+## 4                                                                                                                         
+## 5                                                                                                           More than 2 kg
+## 6                                                                                                         Less than 0.5 kg
+##   X23.What.are.the.most.frequently.purchasing.processed.freshwater.fish.products.in.your.household.per.month...Smoked.fish.
+## 1                                                                                                          Less than 0.5 kg
+## 2                                                                                                                          
+## 3                                                                                                                0.5 - 1 kg
+## 4                                                                                                                          
+## 5                                                                                                                          
+## 6                                                                                                          Less than 0.5 kg
+##   X23.What.are.the.most.frequently.purchasing.processed.freshwater.fish.products.in.your.household.per.month...Other.
+## 1                                                                                                                    
+## 2                                                                                                                    
+## 3                                                                                                                    
+## 4                                                                                                                    
+## 5                                                                                                                    
+## 6                                                                                                                    
+##   X23...b..If.you.consume.fish.product.other.than.the.above.mentioned.processed.product..please.mention.it.here.
+## 1                                                                                                               
+## 2                                                                                                               
+## 3                                                                                                               
+## 4                                                                                                               
+## 5                                                                                                               
+## 6                                                                                                               
+##   X24..What.are.the.barriers.to.increasing.freshwater.fish.consumption.
+## 1                                                             Expensive
+## 2              Fewer places to purchase, Expensive, Fish yield is low, 
+## 3                                                             Expensive
+## 4                                                                      
+## 5                                                             Expensive
+## 6                                                             Expensive
+##   X25..Where.do.you.usually.get.the.fish.from.
+## 1                             Fish stall, Fair
+## 2                                   Fish stall
+## 3                                   Fish stall
+## 4                                             
+## 5                            Delivery vehicles
+## 6          Fish stall, Directly from fishermen
+##   X26..Have.you.noticed.any.allergies.symptoms.of.your.child.after.eating.Freshwater.fish.
+## 1                                                                                       No
+## 2                                                                                       No
+## 3                                                                                       No
+## 4                                                                                         
+## 5                                                                                       No
+## 6                                                                                       No
+##   X27..If.Yes..please.mention.the.fish.species.s
+## 1                                               
+## 2                                               
+## 3                                               
+## 4                                               
+## 5                                               
+## 6                                               
+##   X28..If.Yes..which.symptoms.have.you.observed...You.can.select.more.than.one.option.
+## 1                                                                                     
+## 2                                                                                     
+## 3                                                                                     
+## 4                                                                                     
+## 5                                                                                     
+## 6
+\end{verbatim}
+
+\hypertarget{rename-the-data-set}{%
+\subsubsection{Rename the data set}\label{rename-the-data-set}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption}\OtherTok{\textless{}{-}} \FunctionTok{clean\_names}\NormalTok{(}\AttributeTok{dat =}\NormalTok{ fish\_consumption, }\AttributeTok{case =} \StringTok{"snake"}\NormalTok{) }
+\FunctionTok{glimpse}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 384
+## Columns: 46
+## $ x1_grama_niladhari_division                                                                                                                  <chr> ~
+## $ x2_gender                                                                                                                                    <chr> ~
+## $ x3_age_of_the_child_years                                                                                                                    <dbl> ~
+## $ x4_weight_of_the_child_kg                                                                                                                    <chr> ~
+## $ x5_how_would_you_rate_your_child_s_overall_academic_performances                                                                             <chr> ~
+## $ x6_number_of_people_who_live_in_your_household                                                                                               <chr> ~
+## $ x7_what_animal_protein_sources_do_you_give_your_child_the_most                                                                               <chr> ~
+## $ x8_is_seafood_available_frequently_in_your_area                                                                                              <chr> ~
+## $ x9_does_your_child_eat_freshwater_fish                                                                                                       <chr> ~
+## $ x9_a_if_yes_mention_the_most_preferred_freshwater_fish_type_of_the_child                                                                     <chr> ~
+## $ x9_b_if_no_what_is_the_reason                                                                                                                <chr> ~
+## $ x9_c_if_your_child_hesitates_to_eat_freshwater_fish_what_are_the_methods_you_used_to_encourage_improve_their_consumption_usually             <chr> ~
+## $ x10_why_does_your_child_prefer_freshwater_fish                                                                                               <chr> ~
+## $ x11_what_is_the_reason_for_including_freshwater_fish_in_your_child_s_diet                                                                    <chr> ~
+## $ x12_has_the_amount_of_freshwater_fish_your_family_consumed_changed_over_the_last_3_years                                                     <chr> ~
+## $ x13_if_changed_what_is_the_reason                                                                                                            <chr> ~
+## $ x14_have_you_ever_received_any_guidance_or_recommendation_from_a_healthcare_professional_regarding_freshwater_fish_consumption_of_your_child <chr> ~
+## $ x15_have_you_ever_limited_your_child_s_freshwater_fish_consumption_due_to_any_reason                                                         <chr> ~
+## $ x16_if_yes_what_is_the_reason                                                                                                                <chr> ~
+## $ x17_freshwater_fish_is_a_healthy_source_of_animal_protein_and_provide_other_important_nutrients_for_children                                 <chr> ~
+## $ x18_how_often_does_your_child_eat_freshwater_fish                                                                                            <chr> ~
+## $ x19_when_the_child_eats_freshwater_fish_what_is_the_average_amount_per_day                                                                   <chr> ~
+## $ x20_how_many_pieces_the_child_eats_per_meal                                                                                                  <chr> ~
+## $ x21_what_is_your_child_s_favorite_way_of_preparing_freshwater_fish                                                                           <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_tilapia                                           <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_korali                                            <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_hunga                                             <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_loolla                                            <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_pethiya                                           <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_aandha                                            <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_kawayya                                           <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_ankutta                                           <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_magura                                            <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_karadu_issa                                       <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_carp_spp                                          <chr> ~
+## $ x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_other                                             <chr> ~
+## $ x22_b_if_you_consume_fish_other_than_the_above_mentioned_species_please_mention_it_here                                                      <chr> ~
+## $ x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_dried_fish                        <chr> ~
+## $ x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_smoked_fish                       <chr> ~
+## $ x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_other                             <chr> ~
+## $ x23_b_if_you_consume_fish_product_other_than_the_above_mentioned_processed_product_please_mention_it_here                                    <chr> ~
+## $ x24_what_are_the_barriers_to_increasing_freshwater_fish_consumption                                                                          <chr> ~
+## $ x25_where_do_you_usually_get_the_fish_from                                                                                                   <chr> ~
+## $ x26_have_you_noticed_any_allergies_symptoms_of_your_child_after_eating_freshwater_fish                                                       <chr> ~
+## $ x27_if_yes_please_mention_the_fish_species_s                                                                                                 <chr> ~
+## $ x28_if_yes_which_symptoms_have_you_observed_you_can_select_more_than_one_option                                                              <chr> ~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "x1_grama_niladhari_division"                                                                                                                 
+##  [2] "x2_gender"                                                                                                                                   
+##  [3] "x3_age_of_the_child_years"                                                                                                                   
+##  [4] "x4_weight_of_the_child_kg"                                                                                                                   
+##  [5] "x5_how_would_you_rate_your_child_s_overall_academic_performances"                                                                            
+##  [6] "x6_number_of_people_who_live_in_your_household"                                                                                              
+##  [7] "x7_what_animal_protein_sources_do_you_give_your_child_the_most"                                                                              
+##  [8] "x8_is_seafood_available_frequently_in_your_area"                                                                                             
+##  [9] "x9_does_your_child_eat_freshwater_fish"                                                                                                      
+## [10] "x9_a_if_yes_mention_the_most_preferred_freshwater_fish_type_of_the_child"                                                                    
+## [11] "x9_b_if_no_what_is_the_reason"                                                                                                               
+## [12] "x9_c_if_your_child_hesitates_to_eat_freshwater_fish_what_are_the_methods_you_used_to_encourage_improve_their_consumption_usually"            
+## [13] "x10_why_does_your_child_prefer_freshwater_fish"                                                                                              
+## [14] "x11_what_is_the_reason_for_including_freshwater_fish_in_your_child_s_diet"                                                                   
+## [15] "x12_has_the_amount_of_freshwater_fish_your_family_consumed_changed_over_the_last_3_years"                                                    
+## [16] "x13_if_changed_what_is_the_reason"                                                                                                           
+## [17] "x14_have_you_ever_received_any_guidance_or_recommendation_from_a_healthcare_professional_regarding_freshwater_fish_consumption_of_your_child"
+## [18] "x15_have_you_ever_limited_your_child_s_freshwater_fish_consumption_due_to_any_reason"                                                        
+## [19] "x16_if_yes_what_is_the_reason"                                                                                                               
+## [20] "x17_freshwater_fish_is_a_healthy_source_of_animal_protein_and_provide_other_important_nutrients_for_children"                                
+## [21] "x18_how_often_does_your_child_eat_freshwater_fish"                                                                                           
+## [22] "x19_when_the_child_eats_freshwater_fish_what_is_the_average_amount_per_day"                                                                  
+## [23] "x20_how_many_pieces_the_child_eats_per_meal"                                                                                                 
+## [24] "x21_what_is_your_child_s_favorite_way_of_preparing_freshwater_fish"                                                                          
+## [25] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_tilapia"                                          
+## [26] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_korali"                                           
+## [27] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_hunga"                                            
+## [28] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_loolla"                                           
+## [29] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_pethiya"                                          
+## [30] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_aandha"                                           
+## [31] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_kawayya"                                          
+## [32] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_ankutta"                                          
+## [33] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_magura"                                           
+## [34] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_karadu_issa"                                      
+## [35] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_carp_spp"                                         
+## [36] "x22_what_type_of_freshwater_fish_usually_purchase_in_your_household_and_how_much_per_month_other"                                            
+## [37] "x22_b_if_you_consume_fish_other_than_the_above_mentioned_species_please_mention_it_here"                                                     
+## [38] "x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_dried_fish"                       
+## [39] "x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_smoked_fish"                      
+## [40] "x23_what_are_the_most_frequently_purchasing_processed_freshwater_fish_products_in_your_household_per_month_other"                            
+## [41] "x23_b_if_you_consume_fish_product_other_than_the_above_mentioned_processed_product_please_mention_it_here"                                   
+## [42] "x24_what_are_the_barriers_to_increasing_freshwater_fish_consumption"                                                                         
+## [43] "x25_where_do_you_usually_get_the_fish_from"                                                                                                  
+## [44] "x26_have_you_noticed_any_allergies_symptoms_of_your_child_after_eating_freshwater_fish"                                                      
+## [45] "x27_if_yes_please_mention_the_fish_species_s"                                                                                                
+## [46] "x28_if_yes_which_symptoms_have_you_observed_you_can_select_more_than_one_option"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\OtherTok{\textless{}{-}}\NormalTok{ fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{rename}\NormalTok{(}\AttributeTok{Division =}\NormalTok{ x1\_grama\_niladhari\_division,}
+       \AttributeTok{Gender =}\NormalTok{ x2\_gender,}
+       \AttributeTok{Age =}\NormalTok{ x3\_age\_of\_the\_child\_years,}
+       \AttributeTok{Weight =}\NormalTok{ x4\_weight\_of\_the\_child\_kg,}
+       \AttributeTok{Academic\_performance =}\NormalTok{ x5\_how\_would\_you\_rate\_your\_child\_s\_overall\_academic\_performances,}
+       \AttributeTok{number\_of\_family\_members =}\NormalTok{ x6\_number\_of\_people\_who\_live\_in\_your\_household,}
+       \AttributeTok{animal\_protein =}\NormalTok{  x7\_what\_animal\_protein\_sources\_do\_you\_give\_your\_child\_the\_most,}
+       \AttributeTok{seafood\_availability =}\NormalTok{ x8\_is\_seafood\_available\_frequently\_in\_your\_area,}
+       \AttributeTok{eat\_freshwater\_fish =}\NormalTok{ x9\_does\_your\_child\_eat\_freshwater\_fish,}
+       \AttributeTok{fish\_type =}\NormalTok{ x9\_a\_if\_yes\_mention\_the\_most\_preferred\_freshwater\_fish\_type\_of\_the\_child,}
+       \AttributeTok{reason =}\NormalTok{ x9\_b\_if\_no\_what\_is\_the\_reason,}
+       \AttributeTok{improve\_consumption =}\NormalTok{ x9\_c\_if\_your\_child\_hesitates\_to\_eat\_freshwater\_fish\_what\_are\_the\_methods\_you\_used\_to\_encourage\_improve\_their\_consumption\_usually,}
+       \AttributeTok{reason\_to\_prefer =}\NormalTok{ x10\_why\_does\_your\_child\_prefer\_freshwater\_fish,}
+       \AttributeTok{reason\_to\_include =}\NormalTok{  x11\_what\_is\_the\_reason\_for\_including\_freshwater\_fish\_in\_your\_child\_s\_diet,}
+       \AttributeTok{consumption\_changing =}\NormalTok{ x12\_has\_the\_amount\_of\_freshwater\_fish\_your\_family\_consumed\_changed\_over\_the\_last\_3\_years,}
+       \AttributeTok{reason\_to\_change =}\NormalTok{ x13\_if\_changed\_what\_is\_the\_reason,}
+       \AttributeTok{healthcare\_guidance =}\NormalTok{ x14\_have\_you\_ever\_received\_any\_guidance\_or\_recommendation\_from\_a\_healthcare\_professional\_regarding\_freshwater\_fish\_consumption\_of\_your\_child,}
+       \AttributeTok{limit\_the\_consumption =}\NormalTok{ x15\_have\_you\_ever\_limited\_your\_child\_s\_freshwater\_fish\_consumption\_due\_to\_any\_reason,}
+       \AttributeTok{reason\_to\_limit\_change =}\NormalTok{ x16\_if\_yes\_what\_is\_the\_reason,}
+       \AttributeTok{freshwater\_fish\_nut =}\NormalTok{ x17\_freshwater\_fish\_is\_a\_healthy\_source\_of\_animal\_protein\_and\_provide\_other\_important\_nutrients\_for\_children,}
+       \AttributeTok{time\_range =}\NormalTok{  x18\_how\_often\_does\_your\_child\_eat\_freshwater\_fish,}
+       \AttributeTok{avg\_amount =}\NormalTok{ x19\_when\_the\_child\_eats\_freshwater\_fish\_what\_is\_the\_average\_amount\_per\_day,}
+       \AttributeTok{num\_of\_pieces =}\NormalTok{ x20\_how\_many\_pieces\_the\_child\_eats\_per\_meal,}
+       \AttributeTok{preparing\_way =}\NormalTok{ x21\_what\_is\_your\_child\_s\_favorite\_way\_of\_preparing\_freshwater\_fish,}
+       \AttributeTok{amount\_permonth\_Tilapia =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_tilapia,}
+       \AttributeTok{amount\_permonth\_Korali =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_korali,}
+       \AttributeTok{amount\_permonth\_Hunga =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_hunga,}
+       \AttributeTok{amount\_permonth\_Loolla =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_loolla,}
+       \AttributeTok{amount\_permonth\_Pethiya =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_pethiya,}
+       \AttributeTok{amount\_permonth\_Aandha =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_aandha,}
+       \AttributeTok{amount\_permonth\_Kawayya =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_kawayya,}
+       \AttributeTok{amount\_permonth\_Ankutta =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_ankutta,}
+       \AttributeTok{amount\_permonth\_Magura =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_magura,}
+       \AttributeTok{amount\_permonth\_Kanradu.issa =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_karadu\_issa,}
+       \AttributeTok{amount\_permonth\_Crap.spp =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_carp\_spp,}
+       \AttributeTok{amount\_permonth\_Other =}\NormalTok{ x22\_what\_type\_of\_freshwater\_fish\_usually\_purchase\_in\_your\_household\_and\_how\_much\_per\_month\_other,}
+       \AttributeTok{other\_species =}\NormalTok{ x22\_b\_if\_you\_consume\_fish\_other\_than\_the\_above\_mentioned\_species\_please\_mention\_it\_here,}
+       \AttributeTok{processed\_dried\_fish =}\NormalTok{ x23\_what\_are\_the\_most\_frequently\_purchasing\_processed\_freshwater\_fish\_products\_in\_your\_household\_per\_month\_dried\_fish,}
+       \AttributeTok{processed\_smoked\_fish =}\NormalTok{ x23\_what\_are\_the\_most\_frequently\_purchasing\_processed\_freshwater\_fish\_products\_in\_your\_household\_per\_month\_smoked\_fish,}
+       \AttributeTok{processed\_other =}\NormalTok{ x23\_what\_are\_the\_most\_frequently\_purchasing\_processed\_freshwater\_fish\_products\_in\_your\_household\_per\_month\_other,}
+       \AttributeTok{other\_fish\_product =}\NormalTok{ x23\_b\_if\_you\_consume\_fish\_product\_other\_than\_the\_above\_mentioned\_processed\_product\_please\_mention\_it\_here,}
+       \AttributeTok{increasing\_barriers =}\NormalTok{ x24\_what\_are\_the\_barriers\_to\_increasing\_freshwater\_fish\_consumption,}
+       \AttributeTok{buying\_place =}\NormalTok{ x25\_where\_do\_you\_usually\_get\_the\_fish\_from,}
+       \AttributeTok{allergies =}\NormalTok{ x26\_have\_you\_noticed\_any\_allergies\_symptoms\_of\_your\_child\_after\_eating\_freshwater\_fish,}
+       \AttributeTok{allergy\_species =}\NormalTok{ x27\_if\_yes\_please\_mention\_the\_fish\_species\_s,}
+       \AttributeTok{symptoms =}\NormalTok{ x28\_if\_yes\_which\_symptoms\_have\_you\_observed\_you\_can\_select\_more\_than\_one\_option)}
+      
+
+\FunctionTok{glimpse}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 384
+## Columns: 46
+## $ Division                     <chr> "rambewa", "pandukabhayapura", "rambewa",~
+## $ Gender                       <chr> "female", "male", "male", "male", "male",~
+## $ Age                          <dbl> 10, 5, 8, 5, 4, 7, 10, 5, 9, 8, 7, 8, 8, ~
+## $ Weight                       <chr> "28", "21.4", "35", "18", "6.5", "21", "2~
+## $ Academic_performance         <chr> "Very Good", "Fair", "Excellent", "Good",~
+## $ number_of_family_members     <chr> "5", "4", "4", "7", "7", "5", "5", "4", "~
+## $ animal_protein               <chr> "Meat (Chicken,Beef, Pork, etc.), Fish, E~
+## $ seafood_availability         <chr> "No", "Yes", "No", "Maybe", "Yes", "Maybe~
+## $ eat_freshwater_fish          <chr> "Yes", "Yes", "Yes", "No", "Yes", "Yes", ~
+## $ fish_type                    <chr> "Tilapia", "Not mentioned", "Loolla", "No~
+## $ reason                       <chr> "", "", "", "Dislike of the taste or text~
+## $ improve_consumption          <chr> "Cook in different ways to make it more a~
+## $ reason_to_prefer             <chr> "Awareness of nutritional quality", "As a~
+## $ reason_to_include            <chr> "Nutritional benefits, Health benefits, F~
+## $ consumption_changing         <chr> "No change", "Decreased", "No change", "N~
+## $ reason_to_change             <chr> "", "High consumption of other animal sou~
+## $ healthcare_guidance          <chr> "No", "No", "No", "Not mentioned", "No", ~
+## $ limit_the_consumption        <chr> "No", "No", "No", "", "Maybe", "No", "No"~
+## $ reason_to_limit_change       <chr> "", "", "", "", "Due to some health condi~
+## $ freshwater_fish_nut          <chr> "Strongly agree", "Agree", "Agree", "", "~
+## $ time_range                   <chr> "Twice a week", "Every few months", "3-4 ~
+## $ avg_amount                   <chr> "Two meals", "Two meals", "Two meals", ""~
+## $ num_of_pieces                <chr> "2", "2", "2", "", "2", "2", "2", "1", ""~
+## $ preparing_way                <chr> "Fried fish", "Curry (With coconut milk),~
+## $ amount_permonth_Tilapia      <chr> "Less than 2 kg", "Less than 2 kg", "Less~
+## $ amount_permonth_Korali       <chr> "", "", "No purchasing", "", "", "Less th~
+## $ amount_permonth_Hunga        <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Loolla       <chr> "", "", "Less than 2 kg", "", "", "Less t~
+## $ amount_permonth_Pethiya      <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Aandha       <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Kawayya      <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Ankutta      <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Magura       <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ amount_permonth_Kanradu.issa <chr> "", "", "No purchasing", "", "", "", "2 -~
+## $ amount_permonth_Crap.spp     <chr> "", "", "No purchasing", "", "", "", "Les~
+## $ amount_permonth_Other        <chr> "", "", "No purchasing", "", "", "", "No ~
+## $ other_species                <chr> "", "", "", "", "", "", "", "", "", "", "~
+## $ processed_dried_fish         <chr> "Less than 0.5 kg", "", "0.5 - 1 kg", "",~
+## $ processed_smoked_fish        <chr> "Less than 0.5 kg", "", "0.5 - 1 kg", "",~
+## $ processed_other              <chr> "", "", "", "", "", "", "No purchasing", ~
+## $ other_fish_product           <chr> "", "", "", "", "", "", "Tilapia ", "", "~
+## $ increasing_barriers          <chr> "Expensive", "Fewer places to purchase, E~
+## $ buying_place                 <chr> "Fish stall, Fair", "Fish stall", "Fish s~
+## $ allergies                    <chr> "No", "No", "No", "", "No", "No", "No", "~
+## $ allergy_species              <chr> "", "", "", "", "", "", "", "", "", "", "~
+## $ symptoms                     <chr> "", "", "", "", "", "", "", "", "", "", "~
+\end{verbatim}
+
+\hypertarget{view-data-set-after-the-rename}{%
+\subsubsection{View data set after the
+rename}\label{view-data-set-after-the-rename}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{view}\NormalTok{(fish\_consumption)}
+\FunctionTok{head}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Division Gender Age Weight Academic_performance
+## 1             rambewa female  10     28            Very Good
+## 2    pandukabhayapura   male   5   21.4                 Fair
+## 3             rambewa   male   8     35            Excellent
+## 4 diviya udabendawewa   male   5     18                 Good
+## 5         sadamalgama   male   4    6.5                 Good
+## 6         sadamalgama female   7     21                 Fair
+##   number_of_family_members
+## 1                        5
+## 2                        4
+## 3                        4
+## 4                        7
+## 5                        7
+## 6                        5
+##                                                animal_protein
+## 1 Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+## 2                       Meat (Chicken,Beef, Pork, etc.), Eggs
+## 3 Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+## 4                                              Dairy Products
+## 5                                              Dairy Products
+## 6 Meat (Chicken,Beef, Pork, etc.), Fish, Eggs, Dairy Products
+##   seafood_availability eat_freshwater_fish     fish_type
+## 1                   No                 Yes       Tilapia
+## 2                  Yes                 Yes Not mentioned
+## 3                   No                 Yes        Loolla
+## 4                Maybe                  No Not mentioned
+## 5                  Yes                 Yes      Tilapia 
+## 6                Maybe                 Yes      Tilapia 
+##                            reason
+## 1                                
+## 2                                
+## 3                                
+## 4 Dislike of the taste or texture
+## 5                                
+## 6                                
+##                                                                                             improve_consumption
+## 1 Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 2                                                                                                              
+## 3 Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 4                                                                               Serve with their favorite foods
+## 5 Cook in different ways to make it more appealing (Fish cutlets, Fish patties, Fish biriyani, Fish sandwiches)
+## 6                                                                                                              
+##                   reason_to_prefer
+## 1 Awareness of nutritional quality
+## 2                  As a food habit
+## 3                     Milder taste
+## 4                                 
+## 5                  As a food habit
+## 6    Milder taste, As a food habit
+##                                                     reason_to_include
+## 1 Nutritional benefits, Health benefits, Freshness, Readily available
+## 2                                         Nutritional benefits, Taste
+## 3                                                Nutritional benefits
+## 4                                                                    
+## 5                                                Nutritional benefits
+## 6                               Nutritional benefits, Health benefits
+##   consumption_changing                         reason_to_change
+## 1            No change                                         
+## 2            Decreased High consumption of other animal sources
+## 3            No change                                         
+## 4        Not mentioned                                         
+## 5            Decreased                               Expensive 
+## 6            Decreased                               Inflation 
+##   healthcare_guidance limit_the_consumption
+## 1                  No                    No
+## 2                  No                    No
+## 3                  No                    No
+## 4       Not mentioned                      
+## 5                  No                 Maybe
+## 6                  No                    No
+##                          reason_to_limit_change freshwater_fish_nut
+## 1                                                    Strongly agree
+## 2                                                             Agree
+## 3                                                             Agree
+## 4                                                                  
+## 5 Due to some health conditions of the children               Agree
+## 6                                                             Agree
+##         time_range avg_amount num_of_pieces
+## 1     Twice a week  Two meals             2
+## 2 Every few months  Two meals             2
+## 3 3-4 times a week  Two meals             2
+## 4                                          
+## 5      Once a week   One meal             2
+## 6     Twice a week  Two meals             2
+##                                                           preparing_way
+## 1                                                            Fried fish
+## 2                                 Curry (With coconut milk), Fried fish
+## 3                                             Curry (With coconut milk)
+## 4                                                                      
+## 5                                      Fish cutlet, Patties, Sandwiches
+## 6 Curry (With coconut milk), Fried fish, Fish cutlet/patties/sandwiches
+##   amount_permonth_Tilapia amount_permonth_Korali amount_permonth_Hunga
+## 1          Less than 2 kg                                             
+## 2          Less than 2 kg                                             
+## 3          Less than 2 kg          No purchasing         No purchasing
+## 4                                                                     
+## 5          More than 6 kg                                             
+## 6          Less than 2 kg         Less than 2 kg                      
+##   amount_permonth_Loolla amount_permonth_Pethiya amount_permonth_Aandha
+## 1                                                                      
+## 2                                                                      
+## 3         Less than 2 kg           No purchasing          No purchasing
+## 4                                                                      
+## 5                                                                      
+## 6         Less than 2 kg                                               
+##   amount_permonth_Kawayya amount_permonth_Ankutta amount_permonth_Magura
+## 1                                                                       
+## 2                                                                       
+## 3           No purchasing           No purchasing          No purchasing
+## 4                                                                       
+## 5                                                                       
+## 6                                                                       
+##   amount_permonth_Kanradu.issa amount_permonth_Crap.spp amount_permonth_Other
+## 1                                                                            
+## 2                                                                            
+## 3                No purchasing            No purchasing         No purchasing
+## 4                                                                            
+## 5                                                                            
+## 6                                                                            
+##   other_species processed_dried_fish processed_smoked_fish processed_other
+## 1                   Less than 0.5 kg      Less than 0.5 kg                
+## 2                                                                         
+## 3                         0.5 - 1 kg            0.5 - 1 kg                
+## 4                                                                         
+## 5                     More than 2 kg                                      
+## 6                   Less than 0.5 kg      Less than 0.5 kg                
+##   other_fish_product                                      increasing_barriers
+## 1                                                                   Expensive
+## 2                    Fewer places to purchase, Expensive, Fish yield is low, 
+## 3                                                                   Expensive
+## 4                                                                            
+## 5                                                                   Expensive
+## 6                                                                   Expensive
+##                          buying_place allergies allergy_species symptoms
+## 1                    Fish stall, Fair        No                         
+## 2                          Fish stall        No                         
+## 3                          Fish stall        No                         
+## 4                                                                       
+## 5                   Delivery vehicles        No                         
+## 6 Fish stall, Directly from fishermen        No
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{attach}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{number-of-observations}{%
+\subsubsection{Number of observations}\label{number-of-observations}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 384  46
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This data set contains 384 obseravtions and 46 columns.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(fish\_consumption))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     Division                       Gender 
+##                            0                            0 
+##                          Age                       Weight 
+##                            0                            0 
+##         Academic_performance     number_of_family_members 
+##                            0                            0 
+##               animal_protein         seafood_availability 
+##                            0                            0 
+##          eat_freshwater_fish                    fish_type 
+##                            0                            0 
+##                       reason          improve_consumption 
+##                            0                            0 
+##             reason_to_prefer            reason_to_include 
+##                            0                            0 
+##         consumption_changing             reason_to_change 
+##                            0                            0 
+##          healthcare_guidance        limit_the_consumption 
+##                            0                            0 
+##       reason_to_limit_change          freshwater_fish_nut 
+##                            0                            0 
+##                   time_range                   avg_amount 
+##                            0                            0 
+##                num_of_pieces                preparing_way 
+##                            0                            0 
+##      amount_permonth_Tilapia       amount_permonth_Korali 
+##                            0                            0 
+##        amount_permonth_Hunga       amount_permonth_Loolla 
+##                            0                            0 
+##      amount_permonth_Pethiya       amount_permonth_Aandha 
+##                            0                            0 
+##      amount_permonth_Kawayya      amount_permonth_Ankutta 
+##                            0                            0 
+##       amount_permonth_Magura amount_permonth_Kanradu.issa 
+##                            0                            0 
+##     amount_permonth_Crap.spp        amount_permonth_Other 
+##                            0                            0 
+##                other_species         processed_dried_fish 
+##                            0                            0 
+##        processed_smoked_fish              processed_other 
+##                            0                            0 
+##           other_fish_product          increasing_barriers 
+##                            0                            0 
+##                 buying_place                    allergies 
+##                            0                            0 
+##              allergy_species                     symptoms 
+##                            0                            0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Looking good! there are no any NA values in the data set. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{summary-of-the-data}{%
+\subsubsection{Summary of the data}\label{summary-of-the-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Division            Gender               Age            Weight         
+##  Length:384         Length:384         Min.   : 3.000   Length:384        
+##  Class :character   Class :character   1st Qu.: 5.000   Class :character  
+##  Mode  :character   Mode  :character   Median : 7.000   Mode  :character  
+##                                        Mean   : 6.753                     
+##                                        3rd Qu.: 9.000                     
+##                                        Max.   :10.000                     
+##  Academic_performance number_of_family_members animal_protein    
+##  Length:384           Length:384               Length:384        
+##  Class :character     Class :character         Class :character  
+##  Mode  :character     Mode  :character         Mode  :character  
+##                                                                  
+##                                                                  
+##                                                                  
+##  seafood_availability eat_freshwater_fish  fish_type            reason         
+##  Length:384           Length:384          Length:384         Length:384        
+##  Class :character     Class :character    Class :character   Class :character  
+##  Mode  :character     Mode  :character    Mode  :character   Mode  :character  
+##                                                                                
+##                                                                                
+##                                                                                
+##  improve_consumption reason_to_prefer   reason_to_include  consumption_changing
+##  Length:384          Length:384         Length:384         Length:384          
+##  Class :character    Class :character   Class :character   Class :character    
+##  Mode  :character    Mode  :character   Mode  :character   Mode  :character    
+##                                                                                
+##                                                                                
+##                                                                                
+##  reason_to_change   healthcare_guidance limit_the_consumption
+##  Length:384         Length:384          Length:384           
+##  Class :character   Class :character    Class :character     
+##  Mode  :character   Mode  :character    Mode  :character     
+##                                                              
+##                                                              
+##                                                              
+##  reason_to_limit_change freshwater_fish_nut  time_range       
+##  Length:384             Length:384          Length:384        
+##  Class :character       Class :character    Class :character  
+##  Mode  :character       Mode  :character    Mode  :character  
+##                                                               
+##                                                               
+##                                                               
+##   avg_amount        num_of_pieces      preparing_way     
+##  Length:384         Length:384         Length:384        
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##  amount_permonth_Tilapia amount_permonth_Korali amount_permonth_Hunga
+##  Length:384              Length:384             Length:384           
+##  Class :character        Class :character       Class :character     
+##  Mode  :character        Mode  :character       Mode  :character     
+##                                                                      
+##                                                                      
+##                                                                      
+##  amount_permonth_Loolla amount_permonth_Pethiya amount_permonth_Aandha
+##  Length:384             Length:384              Length:384            
+##  Class :character       Class :character        Class :character      
+##  Mode  :character       Mode  :character        Mode  :character      
+##                                                                       
+##                                                                       
+##                                                                       
+##  amount_permonth_Kawayya amount_permonth_Ankutta amount_permonth_Magura
+##  Length:384              Length:384              Length:384            
+##  Class :character        Class :character        Class :character      
+##  Mode  :character        Mode  :character        Mode  :character      
+##                                                                        
+##                                                                        
+##                                                                        
+##  amount_permonth_Kanradu.issa amount_permonth_Crap.spp amount_permonth_Other
+##  Length:384                   Length:384               Length:384           
+##  Class :character             Class :character         Class :character     
+##  Mode  :character             Mode  :character         Mode  :character     
+##                                                                             
+##                                                                             
+##                                                                             
+##  other_species      processed_dried_fish processed_smoked_fish
+##  Length:384         Length:384           Length:384           
+##  Class :character   Class :character     Class :character     
+##  Mode  :character   Mode  :character     Mode  :character     
+##                                                               
+##                                                               
+##                                                               
+##  processed_other    other_fish_product increasing_barriers buying_place      
+##  Length:384         Length:384         Length:384          Length:384        
+##  Class :character   Class :character   Class :character    Class :character  
+##  Mode  :character   Mode  :character   Mode  :character    Mode  :character  
+##                                                                              
+##                                                                              
+##                                                                              
+##   allergies         allergy_species      symptoms        
+##  Length:384         Length:384         Length:384        
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+## 
+\end{verbatim}
+
+\hypertarget{number-of-children-in-relevant-divisions}{%
+\subsubsection{Number of children in relevant
+divisions}\label{number-of-children-in-relevant-divisions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Division)) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+\FunctionTok{ylab}\NormalTok{(}\StringTok{"number of children"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{xlab}\NormalTok{(}\StringTok{"grama niladhari division"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{coord\_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Majority of the children who come up with this survey in Pallankulama. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comparison-between-male-and-female-students}{%
+\subsubsection{Comparison between Male and Female
+students}\label{comparison-between-male-and-female-students}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+\FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"Gender"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{)) }\SpecialCharTok{+}
+
+\FunctionTok{ylab}\NormalTok{(}\StringTok{"number of children"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_classic}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Female students are highly responsed to this survey compare it with to male students. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{academic-performance-of-both-male-and-female-students}{%
+\subsubsection{Academic Performance of both Male and Female
+students}\label{academic-performance-of-both-male-and-female-students}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender))}\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Academic\_performance), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"Gender"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{) ) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Gender"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{,}\AttributeTok{fill=}\StringTok{\textquotesingle{}Accademic\_performance\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Academic performance of both female and male students are looking good. But academic performance of male students are little bit lower than to the female students. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sea-food-availability-of-the-divisions}{%
+\subsubsection{Sea food availability of the
+divisions}\label{sea-food-availability-of-the-divisions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ seafood\_availability))}\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Division), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"seafood\_availability"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{,}\StringTok{"No"}\NormalTok{,}\StringTok{"Maybe"}\NormalTok{,}\StringTok{"Not mentioned"}\NormalTok{) ) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"seafood\_availability"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{,}\AttributeTok{fill=}\StringTok{\textquotesingle{}Division\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\hypertarget{fish-type-according-to-the-division}{%
+\subsubsection{Fish type according to the
+division}\label{fish-type-according-to-the-division}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Omit the data who didn\textquotesingle{}t mentioned the fish type that contains in their divisions}
+\NormalTok{fish\_consumption\_1 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, fish\_type }\SpecialCharTok{!=} \StringTok{"Not mentioned"}\NormalTok{)}
+                    \FunctionTok{select}\NormalTok{(fish\_consumption\_1, Division, fish\_type)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Division                 fish_type
+## 1               rambewa                   Tilapia
+## 2               rambewa                    Loolla
+## 3           sadamalgama                  Tilapia 
+## 4           sadamalgama                  Tilapia 
+## 5                gonewa                  Tilapia 
+## 6           sadamalgama                  Tilapia 
+## 7                gonewa                 Thilapiya
+## 8                gonewa                 Thilapiya
+## 9                gonewa                 THILAPIYA
+## 10               gonewa                 Thilapiya
+## 11               gonewa                 Thilapiya
+## 12               gonewa                       All
+## 13         pallankulama     Korali, Loolla, Hunga
+## 14           walasmulla                    Korali
+## 15              rambewa                  Tilapia 
+## 16               gonewa                  Talapath
+## 17              rambewa                   Thilapi
+## 18         pallankulama                    Loolla
+## 19         pallankulama                  Tilapia 
+## 20         pallankulama            Loolla, Korali
+## 21         pallankulama                    Korali
+## 22  diviya udabendawewa                  Tilapia 
+## 23  diviya udabendawewa                   Loolla 
+## 24  diviya udabendawewa                  Tilapia 
+## 25  diviya udabendawewa                  Tilapia 
+## 26  diviya udabendawewa                  Tilapia 
+## 27  diviya udabendawewa                 Theppili 
+## 28  diviya udabendawewa                       All
+## 29  diviya udabendawewa                       All
+## 30  diviya udabendawewa                   Loolla 
+## 31  diviya udabendawewa                  Tilapia 
+## 32  diviya udabendawewa                   Chicken
+## 33  diviya udabendawewa                   Loolla 
+## 34  diviya udabendawewa                 Theppili 
+## 35  diviya udabendawewa                 Theppili 
+## 36  diviya udabendawewa                  Tilapia 
+## 37  diviya udabendawewa                  Tilapia 
+## 38         thalgahawewa                 Theppili 
+## 39         pallankulama                  Tilapia 
+## 40              rambewa                  Tilapia 
+## 41         pallankulama                 Theppili 
+## 42         pallankulama                   Kawayya
+## 43         pallankulama                  Tilapia 
+## 44  diviya udabendawewa           Loolla,Tilapia 
+## 45         thalgahawewa                 Theppili 
+## 46         pallankulama                     Hunga
+## 47        medawachchiya                   Loolla 
+## 48        medawachchiya                   Loolla 
+## 49              rambewa                  Tilapia 
+## 50         pallankulama                   Loolla 
+## 51         pallankulama                  Tilapia 
+## 52         pallankulama                  Tilapia 
+## 53         pallankulama                 Theppili 
+## 54  diviya udabendawewa                 Theppili 
+## 55  diviya udabendawewa                 Theppili 
+## 56  diviya udabendawewa                  Tilapia 
+## 57         thalgahawewa                   Loolla 
+## 58  diviya udabendawewa                  Tilapia 
+## 59  diviya udabendawewa                 Theppili 
+## 60  diviya udabendawewa                  Tilapia 
+## 61         thalgahawewa                  Tilapia 
+## 62  diviya udabendawewa        Loolla , Theppili 
+## 63  diviya udabendawewa                  Tilapia 
+## 64               gonewa                   Loolla 
+## 65               gonewa                  Tilapia 
+## 66               gonewa                  Tilapia 
+## 67               gonewa                  Tilapia 
+## 68               gonewa                  Tilapia 
+## 69  diviya udabendawewa                  Tilapia 
+## 70         pallankulama                  Tilapia 
+## 71               gonewa                 Theppili 
+## 72               gonewa                 Theppili 
+## 73               gonewa                  Tilapia 
+## 74               gonewa                  Tilapia 
+## 75               gonewa                  Tilapia 
+## 76               gonewa                  Tilapia 
+## 77               gonewa                    Korali
+## 78               gonewa                  Tilapia 
+## 79         thalgahawewa                 Theppili 
+## 80               gonewa                  Tilapia 
+## 81               gonewa                   Loolla 
+## 82               gonewa                  Tilapia 
+## 83             medagama                  Tilapia 
+## 84     kandurugasdamana                  Tilapia 
+## 85             medagama                  Tilapia 
+## 86             medagama                  Tilapia 
+## 87             medagama                   Loolla 
+## 88             medagama      Loolla and Theppili 
+## 89     kandurugasdamana                   Loolla 
+## 90             medagama                  Tilapia 
+## 91          sadamalgama                 Theppili 
+## 92             medagama Tilapia, Loolla, Pethiya 
+## 93             medagama                  Tilapia 
+## 94     kandurugasdamana                  Tilapia 
+## 95             medagama                     Lellu
+## 96       parasangaswewa                 Theppili 
+## 97     kandurugasdamana          Tilapia, Loolla 
+## 98             medagama                 Theppili 
+## 99             medagama                    Korali
+## 100            medagama          Tilapia, Loolla 
+## 101    kandurugasdamana                   Tilapia
+## 102            medagama                    Loolla
+## 103            medagama                   Korali 
+## 104    kandurugasdamana                   Tilapia
+## 105   katupuliyankulama                      Eggs
+## 106   katupuliyankulama                 Theppili 
+## 107        doramadalawa                 Theppili 
+## 108         sadamalgama                  Theppili
+## 109    pandukabhayapura          Loolla,Theppili 
+## 110        doramadalawa                   Tilapia
+## 111         sadamalgama                   Loolla 
+## 112       ukkulankulama          Theppili,Loolla 
+## 113             rambewa                   Loolla 
+## 114    pandukabhayapura        Not specified spp.
+## 115             rambewa                 Theppili 
+## 116        doramadalawa                  Theppili
+## 117         sadamalgama                   Loolla 
+## 118        doramadalawa                  Tilapia 
+## 119             yaya 03                 Theppili 
+## 120        pallankulama                   Loolla 
+## 121    pandukabhayapura                  Tilapia 
+## 122   katupuliyankulama                 Theppili 
+## 123    kandurugasdamana                   Tilapia
+## 124        pallankulama                  Theppili
+## 125    pandukabhayapura                  Tilapia 
+## 126       mahadivulwewa                  Tilapia 
+## 127       not mentioned                    Korali
+## 128        doramadalawa                  Tilapia 
+## 129   katupuliyankulama                 Theppili 
+## 130        doramadalawa                 Theppili 
+## 131    kandurugasdamana                 Theppili 
+## 132    kandurugasdamana                  Tilapia 
+## 133   katupuliyankulama                 Theppili 
+## 134      parasangaswewa                  Tilapia 
+## 135   katupuliyankulama                 Theppili 
+## 136   katupuliyankulama                  Tilapia 
+## 137      parasangaswewa                   Korali 
+## 138    pandukabhayapura                   Kawayya
+## 139    kandurugasdamana                  Tilapia 
+## 140    pandukabhayapura                   Loolla 
+## 141    pandukabhayapura                 Theppili 
+## 142    kandurugasdamana                  Tilapia 
+## 143    kandurugasdamana                  Tilapia 
+## 144    pandukabhayapura                   Loolla 
+## 145    pandukabhayapura                   Loolla 
+## 146    kandurugasdamana                 Theppili 
+## 147    kandurugasdamana                 Theppili 
+## 148    kandurugasdamana                  Tilapia 
+## 149    pandukabhayapura                 Theppili 
+## 150    kandurugasdamana                   Loolla 
+## 151    pandukabhayapura                   Loolla 
+## 152    kandurugasdamana                  Tilapia 
+## 153    kandurugasdamana                  Tilapia 
+## 154    kandurugasdamana                  Tilapia 
+## 155            mahawewa                   Loolla 
+## 156    kandurugasdamana                  Tilapia 
+## 157    kandurugasdamana                 Theppili 
+## 158    kandurugasdamana                  Tilapia 
+## 159    pandukabhayapura                  Tilapia 
+## 160    kandurugasdamana                  Tilapia 
+## 161         sadamalgama                 Theppili 
+## 162      wahamalgollewa                   Loolla 
+## 163      parasangaswewa                 Theppili 
+## 164   katupuliyankulama                 Theppili 
+## 165   katupuliyankulama                 Theppili 
+## 166         sadamalgama                  Tilapia 
+## 167         sadamalgama                 Theppili 
+## 168        pallankulama                 Theppili 
+## 169        doramadalawa                  Tilapia 
+## 170        pallankulama                 Theppili 
+## 171   katupuliyankulama                   Korali 
+## 172      parasangaswewa                   Loolla 
+## 173   ihalakolongaswewa                   Korali 
+## 174   katupuliyankulama                   Korali 
+## 175         sadamalgama                  Kawayya 
+## 176         sadamalgama                   Loolla 
+## 177          weheragala                   Loolla 
+## 178             rambewa                   Loolla 
+## 179        pallankulama                   Korali 
+## 180        pallankulama                 Theppili 
+## 181             rambewa                   Loolla 
+## 182        pallankulama                  Tilapia 
+## 183        pallankulama                   Korali 
+## 184        pallankulama                   Korali 
+## 185       medawachchiya                   Loolla 
+## 186        pallankulama                   Loolla 
+## 187   ihalakolongaswewa                  Tilapia 
+## 188   ihalakolongaswewa                  Tilapia 
+## 189   ihalakolongaswewa                  Tilapia 
+## 190   ihalakolongaswewa                 Theppili 
+## 191      wahamalgollewa                 Theppili 
+## 192      galviragollewa                   Loolla 
+## 193      galviragollewa                  Tilapia 
+## 194   ihalakolongaswewa                  Tilapia 
+## 195   ihalakolongaswewa                  Kawayya 
+## 196        pallankulama                 Theppili 
+## 197              gonewa                  Tilapia 
+## 198      mahakanadarawa                  Tilapia 
+## 199        pallankulama                 Theppili 
+## 200       ukkulankulama                   Korali 
+## 201             rambewa                  Tilapia 
+## 202       nabadagaswewa       Tilapia & Theppili 
+## 203        ikirigollewa                   Korali 
+## 204             rambewa                 Theppili 
+## 205             rambewa                  Tilapia 
+## 206             rambewa                  Tilapia 
+## 207        pallankulama                  Tilapia 
+## 208       nabadagaswewa                       All
+## 209       nabadagaswewa                  Tilapia 
+## 210              gonewa                  Tilapia 
+## 211       nabadagaswewa                   Loolla 
+## 212         sadamalgama                 Theppili 
+## 213        galkandegama  Theppili,Loolla,Tilapia 
+## 214          meemalwewa                       All
+## 215             rambewa                   Loolla 
+## 216        pallankulama                 Theppili 
+## 217         sadamalgama                  Tilapia 
+## 218       nabadagaswewa                   Korali 
+## 219       ukkulankulama                  Tilapia 
+## 220        pallankulama                   Korali 
+## 221 diviya udabendawewa                  Tilapia 
+## 222        pallankulama                   Korali 
+## 223       ukkulankulama                  Kawayya 
+## 224          weheragala                    Hunga
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_1 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_type, Division)}
+\NormalTok{table\_1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            Division
+## fish_type                   diviya udabendawewa doramadalawa galkandegama
+##   All                                         2            0            0
+##   Chicken                                     1            0            0
+##   Eggs                                        0            0            0
+##   Hunga                                       0            0            0
+##   Hunga                                       0            0            0
+##   Kawayya                                     0            0            0
+##   Kawayya                                     0            0            0
+##   Korali                                      0            0            0
+##   Korali                                      0            0            0
+##   Korali, Loolla, Hunga                       0            0            0
+##   Lellu                                       0            0            0
+##   Loolla                                      0            0            0
+##   Loolla                                      3            0            0
+##   Loolla , Theppili                           1            0            0
+##   Loolla and Theppili                         0            0            0
+##   Loolla, Korali                              0            0            0
+##   Loolla,Theppili                             0            0            0
+##   Loolla,Tilapia                              1            0            0
+##   Not mentioned                               7            0            0
+##   Not specified spp.                          0            0            0
+##   Talapath                                    0            0            0
+##   Theppili                                    0            1            0
+##   Theppili                                    6            2            0
+##   Theppili,Loolla                             0            0            0
+##   Theppili,Loolla,Tilapia                     0            0            1
+##   Thilapi                                     0            0            0
+##   Thilapiya                                   0            0            0
+##   THILAPIYA                                   0            0            0
+##   Tilapia                                     0            1            0
+##   Tilapia                                    13            3            0
+##   Tilapia & Theppili                          0            0            0
+##   Tilapia, Loolla                             0            0            0
+##   Tilapia, Loolla, Pethiya                    0            0            0
+##                            Division
+## fish_type                   galviragollewa ginikatuwewa gonewa
+##   All                                    0            0      1
+##   Chicken                                0            0      0
+##   Eggs                                   0            0      0
+##   Hunga                                  0            0      0
+##   Hunga                                  0            0      0
+##   Kawayya                                0            0      0
+##   Kawayya                                0            0      0
+##   Korali                                 0            0      1
+##   Korali                                 0            0      0
+##   Korali, Loolla, Hunga                  0            0      0
+##   Lellu                                  0            0      0
+##   Loolla                                 0            0      0
+##   Loolla                                 1            0      2
+##   Loolla , Theppili                      0            0      0
+##   Loolla and Theppili                    0            0      0
+##   Loolla, Korali                         0            0      0
+##   Loolla,Theppili                        0            0      0
+##   Loolla,Tilapia                         0            0      0
+##   Not mentioned                          0            2     16
+##   Not specified spp.                     0            0      0
+##   Talapath                               0            0      1
+##   Theppili                               0            0      0
+##   Theppili                               0            0      2
+##   Theppili,Loolla                        0            0      0
+##   Theppili,Loolla,Tilapia                0            0      0
+##   Thilapi                                0            0      0
+##   Thilapiya                              0            0      4
+##   THILAPIYA                              0            0      1
+##   Tilapia                                0            0      0
+##   Tilapia                                1            0     14
+##   Tilapia & Theppili                     0            0      0
+##   Tilapia, Loolla                        0            0      0
+##   Tilapia, Loolla, Pethiya               0            0      0
+##                            Division
+## fish_type                   ihalakolongaswewa ikirigollewa kandurugasdamana
+##   All                                       0            0                0
+##   Chicken                                   0            0                0
+##   Eggs                                      0            0                0
+##   Hunga                                     0            0                0
+##   Hunga                                     0            0                0
+##   Kawayya                                   0            0                0
+##   Kawayya                                   1            0                0
+##   Korali                                    0            0                0
+##   Korali                                    1            1                0
+##   Korali, Loolla, Hunga                     0            0                0
+##   Lellu                                     0            0                0
+##   Loolla                                    0            0                0
+##   Loolla                                    0            0                2
+##   Loolla , Theppili                         0            0                0
+##   Loolla and Theppili                       0            0                0
+##   Loolla, Korali                            0            0                0
+##   Loolla,Theppili                           0            0                0
+##   Loolla,Tilapia                            0            0                0
+##   Not mentioned                             4            0               28
+##   Not specified spp.                        0            0                0
+##   Talapath                                  0            0                0
+##   Theppili                                  0            0                0
+##   Theppili                                  1            0                4
+##   Theppili,Loolla                           0            0                0
+##   Theppili,Loolla,Tilapia                   0            0                0
+##   Thilapi                                   0            0                0
+##   Thilapiya                                 0            0                0
+##   THILAPIYA                                 0            0                0
+##   Tilapia                                   0            0                3
+##   Tilapia                                   4            0               13
+##   Tilapia & Theppili                        0            0                0
+##   Tilapia, Loolla                           0            0                1
+##   Tilapia, Loolla, Pethiya                  0            0                0
+##                            Division
+## fish_type                   katupuliyankulama konakumbukwewa mahadivulwewa
+##   All                                       0              0             0
+##   Chicken                                   0              0             0
+##   Eggs                                      1              0             0
+##   Hunga                                     0              0             0
+##   Hunga                                     0              0             0
+##   Kawayya                                   0              0             0
+##   Kawayya                                   0              0             0
+##   Korali                                    0              0             0
+##   Korali                                    2              0             0
+##   Korali, Loolla, Hunga                     0              0             0
+##   Lellu                                     0              0             0
+##   Loolla                                    0              0             0
+##   Loolla                                    0              0             0
+##   Loolla , Theppili                         0              0             0
+##   Loolla and Theppili                       0              0             0
+##   Loolla, Korali                            0              0             0
+##   Loolla,Theppili                           0              0             0
+##   Loolla,Tilapia                            0              0             0
+##   Not mentioned                            13              1             0
+##   Not specified spp.                        0              0             0
+##   Talapath                                  0              0             0
+##   Theppili                                  0              0             0
+##   Theppili                                  7              0             0
+##   Theppili,Loolla                           0              0             0
+##   Theppili,Loolla,Tilapia                   0              0             0
+##   Thilapi                                   0              0             0
+##   Thilapiya                                 0              0             0
+##   THILAPIYA                                 0              0             0
+##   Tilapia                                   0              0             0
+##   Tilapia                                   1              0             1
+##   Tilapia & Theppili                        0              0             0
+##   Tilapia, Loolla                           0              0             0
+##   Tilapia, Loolla, Pethiya                  0              0             0
+##                            Division
+## fish_type                   mahakanadarawa mahakumbukwewa mahawewa mankadawala
+##   All                                    0              0        0           0
+##   Chicken                                0              0        0           0
+##   Eggs                                   0              0        0           0
+##   Hunga                                  0              0        0           0
+##   Hunga                                  0              0        0           0
+##   Kawayya                                0              0        0           0
+##   Kawayya                                0              0        0           0
+##   Korali                                 0              0        0           0
+##   Korali                                 0              0        0           0
+##   Korali, Loolla, Hunga                  0              0        0           0
+##   Lellu                                  0              0        0           0
+##   Loolla                                 0              0        0           0
+##   Loolla                                 0              0        1           0
+##   Loolla , Theppili                      0              0        0           0
+##   Loolla and Theppili                    0              0        0           0
+##   Loolla, Korali                         0              0        0           0
+##   Loolla,Theppili                        0              0        0           0
+##   Loolla,Tilapia                         0              0        0           0
+##   Not mentioned                          0              1        2           1
+##   Not specified spp.                     0              0        0           0
+##   Talapath                               0              0        0           0
+##   Theppili                               0              0        0           0
+##   Theppili                               0              0        0           0
+##   Theppili,Loolla                        0              0        0           0
+##   Theppili,Loolla,Tilapia                0              0        0           0
+##   Thilapi                                0              0        0           0
+##   Thilapiya                              0              0        0           0
+##   THILAPIYA                              0              0        0           0
+##   Tilapia                                0              0        0           0
+##   Tilapia                                1              0        0           0
+##   Tilapia & Theppili                     0              0        0           0
+##   Tilapia, Loolla                        0              0        0           0
+##   Tilapia, Loolla, Pethiya               0              0        0           0
+##                            Division
+## fish_type                   medagama medawachchiya meemalwewa nabadagaswewa
+##   All                              0             0          1             1
+##   Chicken                          0             0          0             0
+##   Eggs                             0             0          0             0
+##   Hunga                            0             0          0             0
+##   Hunga                            0             0          0             0
+##   Kawayya                          0             0          0             0
+##   Kawayya                          0             0          0             0
+##   Korali                           1             0          0             0
+##   Korali                           1             0          0             1
+##   Korali, Loolla, Hunga            0             0          0             0
+##   Lellu                            1             0          0             0
+##   Loolla                           1             0          0             0
+##   Loolla                           1             3          0             1
+##   Loolla , Theppili                0             0          0             0
+##   Loolla and Theppili              1             0          0             0
+##   Loolla, Korali                   0             0          0             0
+##   Loolla,Theppili                  0             0          0             0
+##   Loolla,Tilapia                   0             0          0             0
+##   Not mentioned                    8             0          0             1
+##   Not specified spp.               0             0          0             0
+##   Talapath                         0             0          0             0
+##   Theppili                         0             0          0             0
+##   Theppili                         1             0          0             0
+##   Theppili,Loolla                  0             0          0             0
+##   Theppili,Loolla,Tilapia          0             0          0             0
+##   Thilapi                          0             0          0             0
+##   Thilapiya                        0             0          0             0
+##   THILAPIYA                        0             0          0             0
+##   Tilapia                          0             0          0             0
+##   Tilapia                          5             0          0             1
+##   Tilapia & Theppili               0             0          0             1
+##   Tilapia, Loolla                  1             0          0             0
+##   Tilapia, Loolla, Pethiya         1             0          0             0
+##                            Division
+## fish_type                   not mentioned pallankulama pandukabhayapura
+##   All                                   0            0                0
+##   Chicken                               0            0                0
+##   Eggs                                  0            0                0
+##   Hunga                                 0            1                0
+##   Hunga                                 0            0                0
+##   Kawayya                               0            1                1
+##   Kawayya                               0            0                0
+##   Korali                                1            1                0
+##   Korali                                0            5                0
+##   Korali, Loolla, Hunga                 0            1                0
+##   Lellu                                 0            0                0
+##   Loolla                                0            1                0
+##   Loolla                                0            3                4
+##   Loolla , Theppili                     0            0                0
+##   Loolla and Theppili                   0            0                0
+##   Loolla, Korali                        0            1                0
+##   Loolla,Theppili                       0            0                1
+##   Loolla,Tilapia                        0            0                0
+##   Not mentioned                         0           24               16
+##   Not specified spp.                    0            0                1
+##   Talapath                              0            0                0
+##   Theppili                              0            1                0
+##   Theppili                              0            8                2
+##   Theppili,Loolla                       0            0                0
+##   Theppili,Loolla,Tilapia               0            0                0
+##   Thilapi                               0            0                0
+##   Thilapiya                             0            0                0
+##   THILAPIYA                             0            0                0
+##   Tilapia                               0            0                0
+##   Tilapia                               0            8                3
+##   Tilapia & Theppili                    0            0                0
+##   Tilapia, Loolla                       0            0                0
+##   Tilapia, Loolla, Pethiya              0            0                0
+##                            Division
+## fish_type                   pandulagama parasangaswewa pinagama rambewa
+##   All                                 0              0        0       0
+##   Chicken                             0              0        0       0
+##   Eggs                                0              0        0       0
+##   Hunga                               0              0        0       0
+##   Hunga                               0              0        0       0
+##   Kawayya                             0              0        0       0
+##   Kawayya                             0              0        0       0
+##   Korali                              0              0        0       0
+##   Korali                              0              1        0       0
+##   Korali, Loolla, Hunga               0              0        0       0
+##   Lellu                               0              0        0       0
+##   Loolla                              0              0        0       1
+##   Loolla                              0              1        0       4
+##   Loolla , Theppili                   0              0        0       0
+##   Loolla and Theppili                 0              0        0       0
+##   Loolla, Korali                      0              0        0       0
+##   Loolla,Theppili                     0              0        0       0
+##   Loolla,Tilapia                      0              0        0       0
+##   Not mentioned                       1              2        1      16
+##   Not specified spp.                  0              0        0       0
+##   Talapath                            0              0        0       0
+##   Theppili                            0              0        0       0
+##   Theppili                            0              2        0       2
+##   Theppili,Loolla                     0              0        0       0
+##   Theppili,Loolla,Tilapia             0              0        0       0
+##   Thilapi                             0              0        0       1
+##   Thilapiya                           0              0        0       0
+##   THILAPIYA                           0              0        0       0
+##   Tilapia                             0              0        0       1
+##   Tilapia                             0              1        0       6
+##   Tilapia & Theppili                  0              0        0       0
+##   Tilapia, Loolla                     0              0        0       0
+##   Tilapia, Loolla, Pethiya            0              0        0       0
+##                            Division
+## fish_type                   sadamalgama thalgahawewa ukkulankulama
+##   All                                 0            0             0
+##   Chicken                             0            0             0
+##   Eggs                                0            0             0
+##   Hunga                               0            0             0
+##   Hunga                               0            0             0
+##   Kawayya                             0            0             0
+##   Kawayya                             1            0             1
+##   Korali                              0            0             0
+##   Korali                              0            0             1
+##   Korali, Loolla, Hunga               0            0             0
+##   Lellu                               0            0             0
+##   Loolla                              0            0             0
+##   Loolla                              3            1             0
+##   Loolla , Theppili                   0            0             0
+##   Loolla and Theppili                 0            0             0
+##   Loolla, Korali                      0            0             0
+##   Loolla,Theppili                     0            0             0
+##   Loolla,Tilapia                      0            0             0
+##   Not mentioned                       9            3             4
+##   Not specified spp.                  0            0             0
+##   Talapath                            0            0             0
+##   Theppili                            1            0             0
+##   Theppili                            4            3             0
+##   Theppili,Loolla                     0            0             1
+##   Theppili,Loolla,Tilapia             0            0             0
+##   Thilapi                             0            0             0
+##   Thilapiya                           0            0             0
+##   THILAPIYA                           0            0             0
+##   Tilapia                             0            0             0
+##   Tilapia                             5            1             1
+##   Tilapia & Theppili                  0            0             0
+##   Tilapia, Loolla                     0            0             0
+##   Tilapia, Loolla, Pethiya            0            0             0
+##                            Division
+## fish_type                   wahamalgollewa walasmulla weheragala yaya 03
+##   All                                    0          0          0       0
+##   Chicken                                0          0          0       0
+##   Eggs                                   0          0          0       0
+##   Hunga                                  0          0          0       0
+##   Hunga                                  0          0          1       0
+##   Kawayya                                0          0          0       0
+##   Kawayya                                0          0          0       0
+##   Korali                                 0          1          0       0
+##   Korali                                 0          0          0       0
+##   Korali, Loolla, Hunga                  0          0          0       0
+##   Lellu                                  0          0          0       0
+##   Loolla                                 0          0          0       0
+##   Loolla                                 1          0          1       0
+##   Loolla , Theppili                      0          0          0       0
+##   Loolla and Theppili                    0          0          0       0
+##   Loolla, Korali                         0          0          0       0
+##   Loolla,Theppili                        0          0          0       0
+##   Loolla,Tilapia                         0          0          0       0
+##   Not mentioned                          0          0          0       0
+##   Not specified spp.                     0          0          0       0
+##   Talapath                               0          0          0       0
+##   Theppili                               0          0          0       0
+##   Theppili                               1          0          0       1
+##   Theppili,Loolla                        0          0          0       0
+##   Theppili,Loolla,Tilapia                0          0          0       0
+##   Thilapi                                0          0          0       0
+##   Thilapiya                              0          0          0       0
+##   THILAPIYA                              0          0          0       0
+##   Tilapia                                0          0          0       0
+##   Tilapia                                0          0          0       0
+##   Tilapia & Theppili                     0          0          0       0
+##   Tilapia, Loolla                        0          0          0       0
+##   Tilapia, Loolla, Pethiya               0          0          0       0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption\_1, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ fish\_type)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"fish type"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Bar Plot for ythe fish\_type"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\hypertarget{the-relationship-between-age-and-weight}{%
+\subsubsection{The relationship between Age and
+Weight}\label{the-relationship-between-age-and-weight}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#eliminate the data who not mentioned their weights}
+\NormalTok{fish\_consumption\_2 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, Weight }\SpecialCharTok{!=} \StringTok{"not mentioned"}\NormalTok{)}
+                         \FunctionTok{select}\NormalTok{(fish\_consumption\_2, Age, Weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Age Weight
+## 1   10.0     28
+## 2    5.0   21.4
+## 3    8.0     35
+## 4    5.0     18
+## 5    4.0    6.5
+## 6    7.0     21
+## 7   10.0     22
+## 8    5.0     13
+## 9    9.0     24
+## 10   8.0     20
+## 11   7.0     18
+## 12   8.0     17
+## 13   8.0     18
+## 14   8.0     14
+## 15  10.0     30
+## 16   4.0      7
+## 17   7.0   24.7
+## 18   3.0     10
+## 19   6.0     18
+## 20   8.0     15
+## 21   5.0     18
+## 22   3.0     10
+## 23   6.0     22
+## 24   6.0     18
+## 25   9.0     16
+## 26   7.0     19
+## 27   9.0     18
+## 28   7.0     16
+## 29  10.0     29
+## 30   9.0     35
+## 31   9.0     19
+## 32   9.0     15
+## 33   9.0     30
+## 34   6.0     17
+## 35  10.0     25
+## 36   7.0     18
+## 37   7.0     16
+## 38   7.0     15
+## 39   7.0     22
+## 40   7.0   17.5
+## 41   7.0     20
+## 42   8.0     32
+## 43   7.0   16.5
+## 44   8.0     15
+## 45   5.0     15
+## 46  10.0   21.6
+## 47   4.0   10.2
+## 48  10.0   22.2
+## 49   5.0     16
+## 50   4.0  14.25
+## 51   7.0   33.5
+## 52   7.0     14
+## 53   9.0   21.1
+## 54   9.0     27
+## 55   5.0     16
+## 56   4.5   13.3
+## 57   4.0   16.3
+## 58   9.0     25
+## 59   9.0   14.7
+## 60   9.0     25
+## 61   9.0     33
+## 62   6.0   14.8
+## 63   3.0   13.2
+## 64   4.0   14.2
+## 65   5.0   14.8
+## 66   5.0     13
+## 67   4.0   12.8
+## 68   5.0   12.6
+## 69   3.5     11
+## 70   4.0   14.9
+## 71   4.0   14.5
+## 72   4.0   11.8
+## 73   4.0   15.5
+## 74   5.0   18.2
+## 75   5.0   14.8
+## 76   4.0   12.9
+## 77   5.0   14.4
+## 78   8.0     24
+## 79   5.0     16
+## 80   9.0   22.9
+## 81   9.0     24
+## 82   6.0     20
+## 83   9.0     43
+## 84   6.0     17
+## 85   8.0     26
+## 86   9.0     17
+## 87   9.0     20
+## 88  10.0     23
+## 89   7.0     21
+## 90   7.0     16
+## 91   6.0     15
+## 92   9.0     23
+## 93  10.0     35
+## 94   8.0     21
+## 95   8.0     20
+## 96   6.0     16
+## 97   8.0     22
+## 98   7.0     14
+## 99   8.0     20
+## 100  6.0   15.3
+## 101  7.0     20
+## 102  9.0     33
+## 103  5.0     16
+## 104 10.0   19.5
+## 105 10.0     19
+## 106  8.0     16
+## 107 10.0     27
+## 108  8.0     20
+## 109 10.0     27
+## 110  6.0     14
+## 111  5.0     15
+## 112 10.0     25
+## 113  9.0     21
+## 114  8.0   21.5
+## 115  8.0     19
+## 116  8.0     23
+## 117  7.0     17
+## 118  8.0     28
+## 119  8.0     20
+## 120  7.0     19
+## 121  7.0     18
+## 122  7.0     17
+## 123  7.0     17
+## 124  7.0   13.5
+## 125  4.0   18.5
+## 126  4.0   12.5
+## 127  5.0     17
+## 128  9.0     18
+## 129  9.0     15
+## 130  9.0     15
+## 131  8.0     21
+## 132  8.0     20
+## 133  5.0     13
+## 134  6.0     15
+## 135  8.0     28
+## 136  8.0     18
+## 137  9.0     20
+## 138  9.0     30
+## 139  8.0     30
+## 140  8.0     18
+## 141  8.0     22
+## 142  8.0     25
+## 143  9.0   21.5
+## 144  8.0     20
+## 145  8.0     15
+## 146  7.0     16
+## 147  7.0     23
+## 148  6.0     24
+## 149  4.0     16
+## 150  5.0     14
+## 151  7.0     13
+## 152  7.0     21
+## 153  7.0     21
+## 154  9.0     32
+## 155 10.0     40
+## 156 10.0     28
+## 157 10.0     30
+## 158 10.0     20
+## 159  9.0     19
+## 160 10.0     22
+## 161 10.0     21
+## 162  8.0     23
+## 163  7.0     20
+## 164  7.0     20
+## 165  9.0     35
+## 166  6.0     12
+## 167  6.0     18
+## 168  9.0     24
+## 169 10.0     31
+## 170 10.0     15
+## 171  9.0     20
+## 172 10.0     22
+## 173 10.0     22
+## 174  4.0   14.6
+## 175  8.0     23
+## 176  4.0     11
+## 177 10.0     21
+## 178  4.0   14.7
+## 179  4.0   12.5
+## 180  5.0     14
+## 181  9.0     21
+## 182  9.0     28
+## 183  9.0     20
+## 184  8.0   20.2
+## 185  9.0     22
+## 186  9.0     22
+## 187  9.0     21
+## 188 10.0     25
+## 189  5.0   15.5
+## 190  5.0   15.3
+## 191  4.0   15.5
+## 192  4.0   14.1
+## 193  5.0     19
+## 194  4.0   16.4
+## 195  3.0   12.7
+## 196 10.0     17
+## 197  3.0   10.3
+## 198  6.0     21
+## 199  6.0     27
+## 200  9.0     23
+## 201  9.0     24
+## 202  9.0     20
+## 203  9.0     18
+## 204  9.0     27
+## 205  8.0     26
+## 206  6.0     15
+## 207  5.0     25
+## 208  6.0     17
+## 209  7.0     21
+## 210  7.0     18
+## 211  7.0     19
+## 212  7.0     17
+## 213  7.0     25
+## 214  7.0     17
+## 215  7.0     15
+## 216  7.0     20
+## 217  7.0     19
+## 218 10.0     22
+## 219  7.0     17
+## 220  6.0     18
+## 221  6.0     17
+## 222  6.0     21
+## 223  5.0     16
+## 224  9.0     25
+## 225 10.0     24
+## 226 10.0     19
+## 227 10.0     20
+## 228  8.0     25
+## 229  5.0     18
+## 230 10.0     24
+## 231  8.0     22
+## 232  8.0     20
+## 233 10.0     25
+## 234 10.0     27
+## 235  9.0     19
+## 236  4.0     16
+## 237  5.0     21
+## 238 10.0     28
+## 239  3.0      7
+## 240  5.0   14.5
+## 241  4.0   15.8
+## 242  4.0   12.6
+## 243  8.0     21
+## 244  9.0     25
+## 245  9.0     28
+## 246  9.0     16
+## 247  6.0     23
+## 248  6.0     16
+## 249  3.0     15
+## 250  5.0   18.1
+## 251  4.0   14.8
+## 252  4.0     14
+## 253  4.0     13
+## 254  4.0   12.8
+## 255  4.0   14.5
+## 256  8.0     24
+## 257  8.0     23
+## 258  8.0     26
+## 259  8.0     20
+## 260  7.0     17
+## 261  7.0   16.5
+## 262  4.0     14
+## 263  5.0   24.5
+## 264  5.0   12.8
+## 265  8.0     23
+## 266  9.0     16
+## 267  6.0     17
+## 268  6.0     16
+## 269  5.0   13.5
+## 270  6.0     18
+## 271  6.0     15
+## 272  6.0     20
+## 273  6.0     21
+## 274  9.0     21
+## 275  7.0     18
+## 276  8.0     19
+## 277  8.0     16
+## 278  7.0     25
+## 279  4.0     14
+## 280  6.0     17
+## 281  8.0     23
+## 282  4.0   14.8
+## 283  7.0     14
+## 284 10.0     21
+## 285  5.0     12
+## 286  6.0     18
+## 287  7.0     13
+## 288  7.0     19
+## 289  4.0   10.5
+## 290  4.0   11.7
+## 291  4.0   12.5
+## 292  5.0     14
+## 293  3.0   13.3
+## 294  4.0     14
+## 295  5.0     15
+## 296  4.0     14
+## 297  3.0   14.2
+## 298  4.0   15.5
+## 299  3.0     11
+## 300  3.0   12.2
+## 301  3.0     11
+## 302  3.0   10.9
+## 303  5.0   14.5
+## 304  5.0     17
+## 305  4.0     11
+## 306  4.0     15
+## 307  5.0     17
+## 308  5.0   14.6
+## 309  3.0   13.9
+## 310  3.0   13.2
+## 311  5.0   16.6
+## 312  4.0   15.9
+## 313  5.0     15
+## 314  5.0   16.3
+## 315  4.0   13.2
+## 316  4.0     14
+## 317  4.0   13.9
+## 318  4.0   15.2
+## 319  4.0   14.1
+## 320  3.0   15.6
+## 321  4.0   13.2
+## 322  4.0   13.5
+## 323  5.0     22
+## 324  4.0     19
+## 325  6.0     25
+## 326  7.0     31
+## 327  8.0     33
+## 328  5.0     20
+## 329  3.0     12
+## 330  7.0     31
+## 331  8.0     25
+## 332  7.0     31
+## 333  8.0   32.5
+## 334  5.0     19
+## 335  4.0     15
+## 336  5.0     13
+## 337  4.0     13
+## 338  5.0     25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Convert Age and Weight as numeric values}
+\NormalTok{\{fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Age }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Age)}
+\NormalTok{fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Weight }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Weight)\}}
+                    
+\CommentTok{\#Plot Age aganist the Weight                   }
+\FunctionTok{plot}\NormalTok{(fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Age, fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Weight, }\AttributeTok{xlab =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Weight"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Age vs. Weight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calculate the correlation coefficient}
+\NormalTok{correlation }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Age, fish\_consumption\_2}\SpecialCharTok{$}\NormalTok{Weight)}
+\NormalTok{correlation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6656333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#By looking at the plot and correlation coefficient, there is a modarate positive relationship between Age and Weight of the students in this division. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{eat-or-not-freshwater-fish}{%
+\subsubsection{Eat or not freshwater
+fish}\label{eat-or-not-freshwater-fish}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of "yes" and "no"}
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(eat\_freshwater\_fish)}
+
+\CommentTok{\# Assign colors to each category}
+\NormalTok{colors }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"green"}\NormalTok{)}
+
+\CommentTok{\# Create a pie chart with counts and colored segments}
+\FunctionTok{pie}\NormalTok{(counts, }\AttributeTok{labels =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(counts), }\StringTok{"("}\NormalTok{, counts, }\StringTok{")"}\NormalTok{), }
+    \AttributeTok{main =} \StringTok{"Pie chart for the preference of freshwater fish"}\NormalTok{, }\AttributeTok{col =}\NormalTok{ colors)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\hypertarget{sea-food-availability}{%
+\subsubsection{Sea food availability}\label{sea-food-availability}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each state}
+\NormalTok{availability\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(seafood\_availability)}
+
+\CommentTok{\# Create a stacked bar plot}
+\FunctionTok{barplot}\NormalTok{(availability\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(availability\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"Availabilty"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Sea food availability of this division"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\hypertarget{sea-food-buying-places}{%
+\subsubsection{Sea food buying places}\label{sea-food-buying-places}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each buying place}
+\NormalTok{buying\_place\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(buying\_place)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(buying\_place\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(buying\_place\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"Buying Place"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Buying Places of Seafood"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\hypertarget{allergy-distribution}{%
+\subsubsection{Allergy distribution}\label{allergy-distribution}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each response}
+\NormalTok{allergy\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(allergies)}
+
+\CommentTok{\# Create a horizontal bar plot}
+\FunctionTok{barplot}\NormalTok{(allergy\_counts, }\AttributeTok{horiz =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"red"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{),}
+        \AttributeTok{xlab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Allergy Status"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Allergy Distribution"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\hypertarget{identify-the-allergy-species}{%
+\subsubsection{Identify the Allergy
+Species}\label{identify-the-allergy-species}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Omit the data who didn\textquotesingle{}t mentioned the fish type that contains in their divisions}
+\NormalTok{fish\_consumption\_3 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, allergies }\SpecialCharTok{==} \StringTok{"Yes"}\NormalTok{)}
+                    \FunctionTok{select}\NormalTok{(fish\_consumption\_3, allergies, allergy\_species, symptoms)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    allergies allergy_species            symptoms
+## 1        Yes           Hunga               Hives
+## 2        Yes                             Itching
+## 3        Yes                            Vomiting
+## 4        Yes                                    
+## 5        Yes                  Vomiting, Bloating
+## 6        Yes                 Vomiting, Bloating 
+## 7        Yes                                    
+## 8        Yes                                    
+## 9        Yes                                    
+## 10       Yes
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_3 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(allergies, allergy\_species)}
+\NormalTok{table\_3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          allergy_species
+## allergies     Hunga
+##            31     0
+##       No  343     0
+##       Yes   9     1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_4 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(allergies, allergy\_species, symptoms)}
+\NormalTok{table\_4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , symptoms = 
+## 
+##          allergy_species
+## allergies     Hunga
+##            31     0
+##       No  343     0
+##       Yes   5     0
+## 
+## , , symptoms = Hives
+## 
+##          allergy_species
+## allergies     Hunga
+##             0     0
+##       No    0     0
+##       Yes   0     1
+## 
+## , , symptoms = Itching
+## 
+##          allergy_species
+## allergies     Hunga
+##             0     0
+##       No    0     0
+##       Yes   1     0
+## 
+## , , symptoms = Vomiting
+## 
+##          allergy_species
+## allergies     Hunga
+##             0     0
+##       No    0     0
+##       Yes   1     0
+## 
+## , , symptoms = Vomiting, Bloating
+## 
+##          allergy_species
+## allergies     Hunga
+##             0     0
+##       No    0     0
+##       Yes   1     0
+## 
+## , , symptoms = Vomiting, Bloating 
+## 
+##          allergy_species
+## allergies     Hunga
+##             0     0
+##       No    0     0
+##       Yes   1     0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#The one and olny allergy species is Hunga}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{increasing-barriers}{%
+\subsubsection{Increasing barriers}\label{increasing-barriers}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each buying place}
+\NormalTok{barriers\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(increasing\_barriers)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(barriers\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(barriers\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"Increasing barriers"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Increasing barriers"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\hypertarget{reasons}{%
+\subsubsection{Reasons}\label{reasons}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(reason, reason, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}pink\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Reason\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\hypertarget{avarage-freshwater-fish-consumption-vs-time-range}{%
+\subsubsection{Avarage freshwater fish consumption vs Time
+range}\label{avarage-freshwater-fish-consumption-vs-time-range}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{time\_range, fish\_consumption}\SpecialCharTok{$}\NormalTok{avg\_amount)}
+\FunctionTok{mosaicplot}\NormalTok{(counts, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Avarage amount per day\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Avarage freshwater fish consumption vs Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\hypertarget{why-does-the-child-prefer-freshwater-fish}{%
+\subsubsection{Why does the child prefer freshwater fish
+?}\label{why-does-the-child-prefer-freshwater-fish}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each reason to prefer}
+\NormalTok{reason\_to\_prefer\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(reason\_to\_prefer)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(reason\_to\_prefer\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(reason\_to\_prefer\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"child\textquotesingle{}s prefer"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Why does the child prefer freshwater fish ?"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\hypertarget{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}{%
+\subsubsection{Amount of freshwater fish consumed change over the last 3
+years}\label{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ consumption\_changing)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Changes of consumption"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Amount of freshwater fish consumed change over the last 3 years"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+\hypertarget{amount-of-freshwater-fish-consumed-change-over-the-last-3-years-1}{%
+\subsubsection{Amount of freshwater fish consumed change over the last 3
+years}\label{amount-of-freshwater-fish-consumed-change-over-the-last-3-years-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(consumption\_changing)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-33-1.pdf}
+
+\hypertarget{average-freshwater-fish-consumption-vs-time-range}{%
+\subsubsection{Average freshwater fish consumption vs Time
+range}\label{average-freshwater-fish-consumption-vs-time-range}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{reason\_to\_change,fish\_consumption}\SpecialCharTok{$}\NormalTok{consumption\_changing)}
+
+\FunctionTok{mosaicplot}\NormalTok{(counts, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Average amount per day\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Average freshwater fish consumption vs Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+\hypertarget{decremented-of-the-fish-consumption-and-reasons}{%
+\subsubsection{Decremented of the fish consumption and
+reasons}\label{decremented-of-the-fish-consumption-and-reasons}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption\_3 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, consumption\_changing }\SpecialCharTok{==} \StringTok{"Decreased"}\NormalTok{)}
+                         \FunctionTok{select}\NormalTok{(fish\_consumption\_3, consumption\_changing, reason\_to\_change)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     consumption_changing
+## 1              Decreased
+## 2              Decreased
+## 3              Decreased
+## 4              Decreased
+## 5              Decreased
+## 6              Decreased
+## 7              Decreased
+## 8              Decreased
+## 9              Decreased
+## 10             Decreased
+## 11             Decreased
+## 12             Decreased
+## 13             Decreased
+## 14             Decreased
+## 15             Decreased
+## 16             Decreased
+## 17             Decreased
+## 18             Decreased
+## 19             Decreased
+## 20             Decreased
+## 21             Decreased
+## 22             Decreased
+## 23             Decreased
+## 24             Decreased
+## 25             Decreased
+## 26             Decreased
+## 27             Decreased
+## 28             Decreased
+## 29             Decreased
+## 30             Decreased
+## 31             Decreased
+## 32             Decreased
+## 33             Decreased
+## 34             Decreased
+## 35             Decreased
+## 36             Decreased
+## 37             Decreased
+## 38             Decreased
+## 39             Decreased
+## 40             Decreased
+## 41             Decreased
+## 42             Decreased
+## 43             Decreased
+## 44             Decreased
+## 45             Decreased
+## 46             Decreased
+## 47             Decreased
+## 48             Decreased
+## 49             Decreased
+## 50             Decreased
+## 51             Decreased
+## 52             Decreased
+## 53             Decreased
+## 54             Decreased
+## 55             Decreased
+## 56             Decreased
+## 57             Decreased
+## 58             Decreased
+## 59             Decreased
+## 60             Decreased
+## 61             Decreased
+## 62             Decreased
+## 63             Decreased
+## 64             Decreased
+## 65             Decreased
+## 66             Decreased
+## 67             Decreased
+## 68             Decreased
+## 69             Decreased
+## 70             Decreased
+## 71             Decreased
+## 72             Decreased
+## 73             Decreased
+## 74             Decreased
+## 75             Decreased
+## 76             Decreased
+## 77             Decreased
+## 78             Decreased
+## 79             Decreased
+## 80             Decreased
+## 81             Decreased
+## 82             Decreased
+## 83             Decreased
+## 84             Decreased
+## 85             Decreased
+## 86             Decreased
+## 87             Decreased
+## 88             Decreased
+## 89             Decreased
+## 90             Decreased
+## 91             Decreased
+## 92             Decreased
+## 93             Decreased
+## 94             Decreased
+## 95             Decreased
+## 96             Decreased
+## 97             Decreased
+## 98             Decreased
+## 99             Decreased
+## 100            Decreased
+## 101            Decreased
+## 102            Decreased
+## 103            Decreased
+## 104            Decreased
+## 105            Decreased
+## 106            Decreased
+## 107            Decreased
+## 108            Decreased
+## 109            Decreased
+## 110            Decreased
+## 111            Decreased
+## 112            Decreased
+## 113            Decreased
+## 114            Decreased
+## 115            Decreased
+## 116            Decreased
+## 117            Decreased
+##                                                        reason_to_change
+## 1                              High consumption of other animal sources
+## 2                                                            Expensive 
+## 3                                                            Inflation 
+## 4                                                            Expensive 
+## 5                                                            Expensive 
+## 6                                                            Expensive 
+## 7                                                            Expensive 
+## 8                                                            Expensive 
+## 9                                                            Expensive 
+## 10                                               Economic Difficulties 
+## 11                                                           Expensive 
+## 12                                                                     
+## 13                                                   Less availability 
+## 14                                               Economic Difficulties 
+## 15                                                                     
+## 16                                                           Expensive 
+## 17                                               Economic Difficulties 
+## 18                                                                     
+## 19                                                           Expensive 
+## 20                                               Economic Difficulties 
+## 21                                                           Expensive 
+## 22                                                                     
+## 23                                               Economic Difficulties 
+## 24                                           Due to consumption of eggs
+## 25                                               Economic Difficulties 
+## 26                                               Economic Difficulties 
+## 27                                                           Expensive 
+## 28                                                                     
+## 29                                               Economic Difficulties 
+## 30                                               Economic Difficulties 
+## 31                                                           Inflation 
+## 32                                                                     
+## 33                                                           Expensive 
+## 34                                                           Expensive 
+## 35                                                                     
+## 36                                                                     
+## 37                                                           Inflation 
+## 38                                                           Expensive 
+## 39                                                                     
+## 40                                                           Expensive 
+## 41                                                           Expensive 
+## 42                                                                     
+## 43                                                           Expensive 
+## 44                                                           Expensive 
+## 45                                               Economic Difficulties 
+## 46                                                           Inflation 
+## 47                                               Economic Difficulties 
+## 48                                                           Expensive 
+## 49                                                           Expensive 
+## 50                                               Economic Difficulties 
+## 51                                                           Expensive 
+## 52                                               Economic Difficulties 
+## 53                                                                     
+## 54                                                           Expensive 
+## 55                                                                     
+## 56                                                           Expensive 
+## 57                                                                     
+## 58                                               Economic Difficulties 
+## 59                                                         Dislikeness 
+## 60                                               Economic Difficulties 
+## 61                                               Economic Difficulties 
+## 62                                               Economic Difficulties 
+## 63                                                                     
+## 64                                                           Expensive 
+## 65                                                           Expensive 
+## 66                                                                     
+## 67                                                           Expensive 
+## 68                                                                     
+## 69                                                                     
+## 70                                                           Expensive 
+## 71                                                                     
+## 72                                                           Expensive 
+## 73                                               Economic Difficulties 
+## 74                                                        Due to Corona
+## 75                                                                     
+## 76                                               Economic difficulties 
+## 77                                                        Higher prices
+## 78                                               Economic difficulties 
+## 79                                               Economic difficulties 
+## 80                                                                     
+## 81                                                           Expensive 
+## 82                                               Economic difficulties 
+## 83                                                           Expensive 
+## 84                                                           Expensive 
+## 85                                                           Expensive 
+## 86                                                                     
+## 87                                                           Expensive 
+## 88                                                           Expensive 
+## 89                                                           Expensive 
+## 90                                                           Expensive 
+## 91                                                           Expensive 
+## 92                                                           Expensive 
+## 93                                                           Expensive 
+## 94                                                           Expensive 
+## 95                                                           Expensive 
+## 96                                                           Expensive 
+## 97                                                           Expensive 
+## 98                                                           Expensive 
+## 99                                                           Expensive 
+## 100                                                                    
+## 101                                                          Expensive 
+## 102                                              Economic difficulties 
+## 103                                                          Expensive 
+## 104                                                          Expensive 
+## 105                                                          Expensive 
+## 106                                                          Expensive 
+## 107                                                          Expensive 
+## 108                                                          Expensive 
+## 109                                              Economic difficulties 
+## 110 Fewer places to purchase and seafood consumption as an alternative 
+## 111                                                          Expensive 
+## 112                                                          Expensive 
+## 113                                                                    
+## 114                                                                    
+## 115                                                          Expensive 
+## 116                                                                    
+## 117
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_5 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption\_3}\SpecialCharTok{$}\NormalTok{consumption\_changing, fish\_consumption\_3}\SpecialCharTok{$}\NormalTok{reason\_to\_change)                        }
+\NormalTok{table\_5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            
+##                Dislikeness  Due to consumption of eggs Due to Corona
+##   Decreased 26            1                          1             1
+##            
+##             Economic difficulties  Economic Difficulties  Expensive 
+##   Decreased                      6                     18         56
+##            
+##             Fewer places to purchase and seafood consumption as an alternative 
+##   Decreased                                                                   1
+##            
+##             High consumption of other animal sources Higher prices Inflation 
+##   Decreased                                        1             1          4
+##            
+##             Less availability 
+##   Decreased                  1
+\end{verbatim}
+
+\hypertarget{incremented-of-the-fish-consumption-and-reasons}{%
+\subsubsection{Incremented of the fish consumption and
+reasons}\label{incremented-of-the-fish-consumption-and-reasons}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption\_4 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, consumption\_changing }\SpecialCharTok{==} \StringTok{"Increased"}\NormalTok{)}
+                         \FunctionTok{select}\NormalTok{(fish\_consumption\_4, consumption\_changing, reason\_to\_change)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    consumption_changing                         reason_to_change
+## 1             Increased                                         
+## 2             Increased                       Readily available 
+## 3             Increased                                         
+## 4             Increased                                         
+## 5             Increased   Preference of the child has increased 
+## 6             Increased                                         
+## 7             Increased                                freshness
+## 8             Increased                                Nutrients
+## 9             Increased                                         
+## 10            Increased                                         
+## 11            Increased                                         
+## 12            Increased                                         
+## 13            Increased                                         
+## 14            Increased                                         
+## 15            Increased                                         
+## 16            Increased                        High consumption 
+## 17            Increased  The number of family members increased 
+## 18            Increased                     Change of residence 
+## 19            Increased                                         
+## 20            Increased   The number of family members increased
+## 21            Increased the number of family members iincreased 
+## 22            Increased                                         
+## 23            Increased                                         
+## 24            Increased                                         
+## 25            Increased   Preference of the child has increased 
+## 26            Increased                       Readily available 
+## 27            Increased                                         
+## 28            Increased                                         
+## 29            Increased   Preference of the child has increased 
+## 30            Increased
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_6 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption\_4}\SpecialCharTok{$}\NormalTok{consumption\_changing, fish\_consumption\_4}\SpecialCharTok{$}\NormalTok{reason\_to\_change)                        }
+\NormalTok{table\_6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            
+##                Change of residence  freshness High consumption  Nutrients
+##   Increased 18                    1         1                 1         1
+##            
+##             Preference of the child has increased  Readily available 
+##   Increased                                      3                  2
+##            
+##             the number of family members iincreased 
+##   Increased                                        1
+##            
+##             The number of family members increased
+##   Increased                                      1
+##            
+##             The number of family members increased 
+##   Increased                                       1
+\end{verbatim}
+
+\hypertarget{section}{%
+\subsubsection{}\label{section}}
+
+Most popular cooking type among students
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each preparing way}
+\NormalTok{preparing\_way\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(preparing\_way)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(preparing\_way\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(preparing\_way\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"child\textquotesingle{}s prefer"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Frequency"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Most popular preparing type among students"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\end{document}
