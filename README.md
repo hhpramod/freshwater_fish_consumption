@@ -1,1 +1,3 @@
-# freshwater_fish_consumption
+# Survey of Freshwater Fish Consumption of Child Population in Rambewa Divisional Secretariat
+
+This analysis is carried out to investigate the freshwater fish consumption of children in Rambewa division in Sri Lanka. Here, I have explored the freshwater fish consumption pattern and trends other than that I have estimated the quantity of fish consumed of a child during a week. This survey was conducted by Ms. K.I.H. Kumari, Final year student, Aquatic Resources Animal Science, Uva Wellassa University, Sri Lanka. Special thanks goes to the research supervisor, Dr. A.S. Mahaliyana, Senior lecturer, Department of Animal Science, Faculty of Animal Science & Export Agriculture, Uva Wellassa University, Sri Lank for your valuable corporation and guidence. 
