@@ -1,6 +1,6 @@
 ---
-title: "fish_consuption"
-author: "S/17/436"
+title: "Freshwater Fish Consumption of Child Population in Rambewa Divisional Secretariat"
+author: "K.I.H.KUMARI"
 date: "2023-06-17"
 output:
   word_document: default
@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Required Packages
+# Required Packages
 
 ```{r}
 library(tidyverse)
@@ -21,14 +21,14 @@ library(tinytex)
 library(janitor)
 ```
 
-### Import the data set
+# Import the data set
 
 ```{r}
 fish_consumption <- read.csv("../data/data.csv")
 head(fish_consumption)
 ```
 
-### Rename the data set
+# Data Reprocessing
 
 ```{r}
 fish_consumption<- clean_names(dat = fish_consumption, case = "snake") 
@@ -36,10 +36,14 @@ glimpse(fish_consumption)
 ```
 
 ```{r}
+##Look at the variable names in the original dataset
+
 names(fish_consumption)
 ```
 
 ```{r}
+##Rename the dataset for further analysis
+
 fish_consumption <- fish_consumption %>%
 rename(Division = x1_grama_niladhari_division,
        Gender = x2_gender,
@@ -89,18 +93,27 @@ rename(Division = x1_grama_niladhari_division,
        symptoms = x28_if_yes_which_symptoms_have_you_observed_you_can_select_more_than_one_option)
       
 
+##Check the variable type of new dataset
+
 glimpse(fish_consumption)
 ```
 
-### View data set after the rename
-
 ```{r}
-view(fish_consumption)
+##Attach data set after the rename and display the first five observation
+
 head(fish_consumption)
 attach(fish_consumption)
 ```
 
-### Number of observations
+```{r}
+##Identify the NA values in each coloum
+
+colSums(is.na(fish_consumption))
+
+#Looking good! there are no any NA values in the data set. 
+```
+
+# Number of observations
 
 ```{r}
 dim(fish_consumption)
@@ -110,28 +123,22 @@ dim(fish_consumption)
 #This data set contains 384 obseravtions and 46 columns.
 ```
 
-```{r}
-colSums(is.na(fish_consumption))
-```
-
-```{r}
-#Looking good! there are no any NA values in the data set. 
-```
-
-### Summary of the data
+# Summary of the data
 
 ```{r}
 summary(fish_consumption)
 ```
 
-### Number of children in relevant divisions
+# Identify the fish consumption pattern and contribution
+
+## Number of children in relevant divisions
 
 ```{r}
 fish_consumption %>%
 ggplot(mapping = aes(x = Division)) +
 geom_bar() +
-ylab("number of children") +
-xlab("grama niladhari division") +
+ylab("Number of children") +
+xlab("Grama niladhari division") +
 coord_flip()
 ```
 
@@ -139,7 +146,7 @@ coord_flip()
 #Majority of the children who come up with this survey in Pallankulama. 
 ```
 
-### Comparison between Male and Female students
+## Comparison between Male and Female children
 
 ```{r}
 fish_consumption %>%
@@ -147,22 +154,22 @@ ggplot(mapping = aes(x = Gender)) +
 geom_bar() +
 scale_x_discrete("Gender", labels = c("Male","Female")) +
 
-ylab("number of children") +
-theme_classic()
+ylab("Number of children") +
+theme_bw()
 ```
 
 ```{r}
 #Female students are highly responsed to this survey compare it with to male students. 
 ```
 
-### Academic Performance of both Male and Female students
+## Academic Performance of both Male and Female students
 
 ```{r}
 fish_consumption %>%
 ggplot(mapping = aes(x = Gender))+
 geom_bar(aes(fill = Academic_performance), position = "dodge") +
 scale_x_discrete("Gender", labels = c("Male","Female") ) +
-labs(x = "Gender", y = "count",fill='Accademic_performance') +
+labs(x = "Gender", y = "count", fill='Accademic_performance') +
 theme_bw()
 ```
 
@@ -170,22 +177,34 @@ theme_bw()
 #Academic performance of both female and male students are looking good. But academic performance of male students are little bit lower than to the female students. 
 ```
 
-### Sea food availability of the divisions
+## Sea food availability of the divisions
 
 ```{r}
 fish_consumption %>%
 ggplot(mapping = aes(x = seafood_availability))+
 geom_bar(aes(fill = Division), position = "dodge") +
 scale_x_discrete("seafood_availability", labels = c("Yes","No","Maybe","Not mentioned") ) +
-labs(x = "seafood_availability", y = "count",fill='Division') +
+labs(x = "seafood_availability", y = "count", fill='Division') +
 theme_bw()
 ```
 
-### Fish type according to the division
+## Sea food availability
+
+```{r}
+
+# Calculate the frequencies of each state
+availability_counts <- table(seafood_availability)
+
+# Create a stacked bar plot
+barplot(availability_counts, col = rainbow(length(availability_counts)), 
+        xlab = "Availabilty", ylab = "Count", main = "Sea food availability of this division")
+```
+
+## Fish type according to the division
 
 ```{r}
 #Omit the data who didn't mentioned the fish type that contains in their divisions
-fish_consumption_1 <- filter(fish_consumption, fish_type != "Not mentioned")
+fish_consumption_1 <- filter(fish_consumption, fish_type != "Not mentioned") 
                     select(fish_consumption_1, Division, fish_type)
     
 table_1 <- table(fish_type, Division)
@@ -198,10 +217,10 @@ ggplot(fish_consumption_1, aes(x = fish_type)) +
   ggtitle("Bar Plot for ythe fish_type") + scale_x_discrete(guide = guide_axis(n.dodge=5))
 ```
 
-### The relationship between Age and Weight
+## The relationship between Age and Weight
 
 ```{r}
-#eliminate the data who not mentioned their weights
+#Eliminate the data who not mentioned their weights
 fish_consumption_2 <- filter(fish_consumption, Weight != "not mentioned")
                          select(fish_consumption_2, Age, Weight)
                     
@@ -222,7 +241,7 @@ correlation
 #By looking at the plot and correlation coefficient, there is a modarate positive relationship between Age and Weight of the students in this division. 
 ```
 
-### Eat or not freshwater fish
+## Eat or not freshwater fish
 
 ```{r}
 
@@ -239,31 +258,315 @@ pie(counts, labels = paste(names(counts), "(", counts, ")"),
 
 ```
 
-### Sea food availability
+## Reason to include freshwater fish into meal 
 
 ```{r}
-
-# Calculate the frequencies of each state
-availability_counts <- table(seafood_availability)
-
-# Create a stacked bar plot
-barplot(availability_counts, col = rainbow(length(availability_counts)), 
-        xlab = "Availabilty", ylab = "Count", main = "Sea food availability of this division")
-
-```
-
-### Sea food buying places
-
-```{r}
-# Calculate the frequencies of each buying place
-buying_place_counts <- table(buying_place)
+# Calculate the frequencies of each reason to prefer
+reason_to_include_counts <- table(reason_to_include)
 
 # Create a bar plot
-barplot(buying_place_counts, col = rainbow(length(buying_place_counts)), 
-        xlab = "Buying Place", ylab = "Count", main = "Buying Places of Seafood")
+barplot(reason_to_include_counts, col = rainbow(length(reason_to_include_counts)), 
+        xlab = "child's prefer", ylab = "Count", main = "Reason to include freshwater fish")
+
 ```
 
-### Allergy distribution
+## Amount of freshwater fish consumed change over the last 3 years
+
+```{r}
+# Create a list of values for each category
+values <- table(consumption_changing)
+
+# Calculate the percentages
+percentages = 100 * values / sum(values)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values), y=percentages, labels=paste0(percentages, "%"), cex=0.5)
+```
+
+```{r}
+ggplot(fish_consumption, aes(x = consumption_changing)) +
+  geom_bar() +
+  xlab("Changes of consumption") +
+  ylab("Frequency") +
+  ggtitle("Amount of freshwater fish consumed change over the last 3 years")
+```
+
+## Decrements of the fish consumption and reasons
+
+```{r}
+fish_consumption_3 <- filter(fish_consumption, consumption_changing == "Decreased")
+                         select(fish_consumption_3, consumption_changing, reason_to_change)
+                         
+table_5 <- table(fish_consumption_3$consumption_changing, fish_consumption_3$reason_to_change)                        
+table_5
+```
+
+## Increment of the fish consumption and reasons
+
+```{r}
+fish_consumption_4 <- filter(fish_consumption, consumption_changing == "Increased")
+                         select(fish_consumption_4, consumption_changing, reason_to_change)
+                         
+table_6 <- table(fish_consumption_4$consumption_changing, fish_consumption_4$reason_to_change)                        
+table_6
+```
+
+## Limitation of the fish consumption
+
+```{r}
+
+# Create a list of values for each category
+values <- table(limit_the_consumption)
+
+# Calculate the percentages
+percentages = 100 * values / sum(values)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+```
+
+## Time period that are freshwater fish eating
+
+```{r}
+ggplot(fish_consumption, aes(x=reorder(time_range, time_range, function(x)-length(x)))) +
+  geom_bar(fill='green') + 
+  labs(x='Reason') +
+  scale_x_discrete(guide = guide_axis(n.dodge=5))
+```
+
+## Average freshwater fish consumption vs Time range
+
+```{r}
+counts <- table(fish_consumption$time_range, fish_consumption$avg_amount)
+mosaicplot(counts, xlab='Time range', ylab='Avarage amount per day',main='Avarage freshwater fish consumption vs Time range', col='yellow')
+```
+
+## Number of freshwater fish pieces for one meal
+
+```{r}
+# Calculate the frequencies of each state
+pieces <- table(num_of_pieces)
+
+# Create a stacked bar plot
+barplot(pieces, col = rainbow(length(pieces)), 
+        xlab = "Number of pieces", ylab = "Count", main = "Number of freshwater fish pieces")
+
+```
+
+## Most popular preparing way among the children
+
+```{r}
+# Calculate the frequencies of each preparing way
+preparing_way_counts <- table(preparing_way)
+
+# Create a bar plot
+barplot(preparing_way_counts, col = rainbow(length(preparing_way_counts)), 
+        xlab = "child's prefer", ylab = "Frequency", main = "Most popular preparing type among students")
+```
+
+## Usually purchase fish type
+
+```{r}
+################Tilapia####################
+# Create a list of values for each category
+values_1 <- table(amount_permonth_Tilapia)
+
+# Calculate the percentages
+percentages = 100 * values_1 / sum(values_1)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_1), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Korali####################
+
+# Create a list of values for each category
+values_2 <- table(amount_permonth_Korali)
+
+# Calculate the percentages
+percentages = 100 * values_2 / sum(values_2)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_2), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Hunga####################
+
+# Create a list of values for each category
+values_3 <- table(amount_permonth_Hunga)
+
+# Calculate the percentages
+percentages = 100 * values_3 / sum(values_3)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_3), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Loolla####################
+
+# Create a list of values for each category
+values_4 <- table(amount_permonth_Loolla)
+
+# Calculate the percentages
+percentages = 100 * values_4 / sum(values_4)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_4), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Pethiya####################
+
+# Create a list of values for each category
+values_5 <- table(amount_permonth_Pethiya)
+
+# Calculate the percentages
+percentages = 100 * values_5 / sum(values_5)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_5), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Aandha####################
+
+# Create a list of values for each category
+values_6 <- table(amount_permonth_Aandha)
+
+# Calculate the percentages
+percentages = 100 * values_6 / sum(values_6)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_6), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Kawayya####################
+
+# Create a list of values for each category
+values_7 <- table(amount_permonth_Kawayya)
+
+# Calculate the percentages
+percentages = 100 * values_7 / sum(values_7)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_7), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Ankutta####################
+
+# Create a list of values for each category
+values_8 <- table(amount_permonth_Ankutta)
+
+# Calculate the percentages
+percentages = 100 * values_8 / sum(values_8)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_8), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Magura####################
+
+# Create a list of values for each category
+values_9 <- table(amount_permonth_Magura)
+
+# Calculate the percentages
+percentages = 100 * values_9 / sum(values_9)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_9), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Kanradu.issa####################
+
+# Create a list of values for each category
+values_10 <- table(amount_permonth_Kanradu.issa)
+
+# Calculate the percentages
+percentages = 100 * values_10 / sum(values_10)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_10), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Crap.spp####################
+
+# Create a list of values for each category
+values_11 <- table(amount_permonth_Kanradu.issa)
+
+# Calculate the percentages
+percentages = 100 * values_11 / sum(values_11)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_11), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+
+
+################Other####################
+
+# Create a list of values for each category
+values_12 <- table(amount_permonth_Other)
+
+# Calculate the percentages
+percentages = 100 * values_12 / sum(values_12)
+percentages = round(percentages, 2)
+
+# Add the percentages to the bars
+text(x=barplot(values_12), y=percentages, labels=paste0(percentages, "%"), cex=0.6)
+```
+
+## Purchased processed freshwater fish product
+
+```{r}
+
+################Processed dried fish####################
+
+ggplot(fish_consumption, aes(x=reorder(processed_dried_fish, processed_dried_fish, function(x)-length(x)))) +
+  geom_bar(fill='lightpink') + 
+  labs(x='processed dried fish') +
+  scale_x_discrete(guide = guide_axis(n.dodge=5))
+
+
+################Processed smoked fish####################
+
+ggplot(fish_consumption, aes(x=reorder(processed_smoked_fish, processed_smoked_fish, function(x)-length(x)))) +
+  geom_bar(fill='lightgreen') + 
+  labs(x='processed smoked fish') +
+  scale_x_discrete(guide = guide_axis(n.dodge=5))
+
+
+################Processed other fish####################
+
+ggplot(fish_consumption, aes(x=reorder(processed_other, processed_other, function(x)-length(x)))) +
+  geom_bar(fill='lightblue') + 
+  labs(x='processed other fish') +
+  scale_x_discrete(guide = guide_axis(n.dodge=5))
+
+```
+
+## Animal protein type
+
+```{r}
+
+fish_consumption %>%
+ggplot(mapping = aes(x = animal_protein)) +
+geom_bar() +
+ylab("Frequency") +
+xlab("Type of animal protein") +
+coord_flip()
+
+```
+
+# Allergy distribution
 
 ```{r}
 # Calculate the frequencies of each response
@@ -274,7 +577,7 @@ barplot(allergy_counts, horiz = FALSE, col = c("green", "red","yellow"),
         xlab = "Count", ylab = "Allergy Status", main = "Allergy Distribution")
 ```
 
-### Identify the Allergy Species
+## Identify the Allergy Species
 
 ```{r}
 #Omit the data who didn't mentioned the fish type that contains in their divisions
@@ -292,7 +595,7 @@ table_4
 #The one and olny allergy species is Hunga
 ```
 
-### Increasing barriers
+# Increasing barriers
 
 ```{r}
 # Calculate the frequencies of each buying place
@@ -303,23 +606,16 @@ barplot(barriers_counts, col = rainbow(length(barriers_counts)),
         xlab = "Increasing barriers", ylab = "Count", main = "Increasing barriers")
 ```
 
-### Reasons
+## Reasons to dislike
 
 ```{r}
 ggplot(fish_consumption, aes(x=reorder(reason, reason, function(x)-length(x)))) +
   geom_bar(fill='pink') + 
-  labs(x='Reason') +
+  labs(x='Reasons to dislike') +
   scale_x_discrete(guide = guide_axis(n.dodge=5))
 ```
 
-### Avarage freshwater fish consumption vs Time range
-
-```{r}
-counts <- table(fish_consumption$time_range, fish_consumption$avg_amount)
-mosaicplot(counts, xlab='Time range', ylab='Avarage amount per day',main='Avarage freshwater fish consumption vs Time range', col='orange')
-```
-
-### Why does the child prefer freshwater fish ?
+## Why does the child prefer freshwater fish ?
 
 ```{r}
 # Calculate the frequencies of each reason to prefer
@@ -330,31 +626,7 @@ barplot(reason_to_prefer_counts, col = rainbow(length(reason_to_prefer_counts)),
         xlab = "child's prefer", ylab = "Count", main = "Why does the child prefer freshwater fish ?")
 ```
 
-### Amount of freshwater fish consumed change over the last 3 years
-
-```{r}
-ggplot(fish_consumption, aes(x = consumption_changing)) +
-  geom_bar() +
-  xlab("Changes of consumption") +
-  ylab("Frequency") +
-  ggtitle("Amount of freshwater fish consumed change over the last 3 years")
-```
-
-### Amount of freshwater fish consumed change over the last 3 years
-
-```{r}
-# Create a list of values for each category
-values <- table(consumption_changing)
-
-# Calculate the percentages
-percentages = 100 * values / sum(values)
-percentages = round(percentages, 2)
-
-# Add the percentages to the bars
-text(x=barplot(values), y=percentages, labels=paste0(percentages, "%"), cex=0.5)
-```
-
-### Average freshwater fish consumption vs Time range
+## Average freshwater fish consumption vs Time range
 
 ```{r}
 counts <- table(fish_consumption$reason_to_change,fish_consumption$consumption_changing)
@@ -362,34 +634,27 @@ counts <- table(fish_consumption$reason_to_change,fish_consumption$consumption_c
 mosaicplot(counts, xlab='Time range', ylab='Average amount per day',main='Average freshwater fish consumption vs Time range', col='orange')
 ```
 
-### Decremented of the fish consumption and reasons 
+## Relationship between some variables
 
 ```{r}
-fish_consumption_3 <- filter(fish_consumption, consumption_changing == "Decreased")
-                         select(fish_consumption_3, consumption_changing, reason_to_change)
-                         
-table_5 <- table(fish_consumption_3$consumption_changing, fish_consumption_3$reason_to_change)                        
-table_5
+##Here we are going to check the significance relationship of two variables by considering null hypothesis as "There is no any relationship between two variables" at 5% significance level
+
+fisher.test(table(fish_consumption$seafood_availability,fish_consumption$eat_freshwater_fish))
+
+fisher.test(table(fish_consumption$Academic_performance,fish_consumption$eat_freshwater_fish))
 ```
 
-### Incremented of the fish consumption and reasons 
-
 ```{r}
-fish_consumption_4 <- filter(fish_consumption, consumption_changing == "Increased")
-                         select(fish_consumption_4, consumption_changing, reason_to_change)
-                         
-table_6 <- table(fish_consumption_4$consumption_changing, fish_consumption_4$reason_to_change)                        
-table_6
+##Since two of the p-values > 0.05, we don't have enough evidence to say that there is a significance relationship among those variables. 
 ```
 
-### 
-Most popular cooking type among students
+## Sea food buying places
 
 ```{r}
-# Calculate the frequencies of each preparing way
-preparing_way_counts <- table(preparing_way)
+# Calculate the frequencies of each buying place
+buying_place_counts <- table(buying_place)
 
 # Create a bar plot
-barplot(preparing_way_counts, col = rainbow(length(preparing_way_counts)), 
-        xlab = "child's prefer", ylab = "Frequency", main = "Most popular preparing type among students")
+barplot(buying_place_counts, col = rainbow(length(buying_place_counts)), 
+        xlab = "Buying Place", ylab = "Count", main = "Buying Places of Seafood")
 ```

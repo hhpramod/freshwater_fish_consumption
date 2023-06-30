@@ -5,16 +5,19 @@
 \documentclass[
 ]{article}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -45,13 +48,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -59,7 +62,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -68,7 +71,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -96,7 +99,7 @@
 \fi
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={fish\_consuption},
   pdfauthor={S/17/436},
@@ -469,8 +472,8 @@
 ## 6
 \end{verbatim}
 
-\hypertarget{rename-the-data-set}{%
-\subsubsection{Rename the data set}\label{rename-the-data-set}}
+\hypertarget{data-reprocessing}{%
+\subsubsection{Data Reprocessing}\label{data-reprocessing}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -532,6 +535,8 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\#Look at the variable names in the original dataset}
+
 \FunctionTok{names}\NormalTok{(fish\_consumption)}
 \end{Highlighting}
 \end{Shaded}
@@ -587,6 +592,8 @@
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\#Rename the dataset for further analysis}
+
 \NormalTok{fish\_consumption }\OtherTok{\textless{}{-}}\NormalTok{ fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
 \FunctionTok{rename}\NormalTok{(}\AttributeTok{Division =}\NormalTok{ x1\_grama\_niladhari\_division,}
        \AttributeTok{Gender =}\NormalTok{ x2\_gender,}
@@ -635,6 +642,8 @@
        \AttributeTok{allergy\_species =}\NormalTok{ x27\_if\_yes\_please\_mention\_the\_fish\_species\_s,}
        \AttributeTok{symptoms =}\NormalTok{ x28\_if\_yes\_which\_symptoms\_have\_you\_observed\_you\_can\_select\_more\_than\_one\_option)}
       
+
+\DocumentationTok{\#\#Check the variable type of new dataset}
 
 \FunctionTok{glimpse}\NormalTok{(fish\_consumption)}
 \end{Highlighting}
@@ -691,13 +700,10 @@
 ## $ symptoms                     <chr> "", "", "", "", "", "", "", "", "", "", "~
 \end{verbatim}
 
-\hypertarget{view-data-set-after-the-rename}{%
-\subsubsection{View data set after the
-rename}\label{view-data-set-after-the-rename}}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{view}\NormalTok{(fish\_consumption)}
+\DocumentationTok{\#\#Attach data set after the rename and display the first five observation}
+
 \FunctionTok{head}\NormalTok{(fish\_consumption)}
 \end{Highlighting}
 \end{Shaded}
@@ -851,27 +857,10 @@ rename}\label{view-data-set-after-the-rename}}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{number-of-observations}{%
-\subsubsection{Number of observations}\label{number-of-observations}}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{dim}\NormalTok{(fish\_consumption)}
-\end{Highlighting}
-\end{Shaded}
+\DocumentationTok{\#\#Identify the NA values in each coloum}
 
-\begin{verbatim}
-## [1] 384  46
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#This data set contains 384 obseravtions and 46 columns.}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(fish\_consumption))}
 \end{Highlighting}
 \end{Shaded}
@@ -928,6 +917,25 @@ rename}\label{view-data-set-after-the-rename}}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Looking good! there are no any NA values in the data set. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{number-of-observations}{%
+\subsubsection{Number of observations}\label{number-of-observations}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(fish\_consumption)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 384  46
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This data set contains 384 obseravtions and 46 columns.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1041,6 +1049,10 @@ rename}\label{view-data-set-after-the-rename}}
 ## 
 \end{verbatim}
 
+\hypertarget{identify-the-fish-consumption-pattern-and-contribution}{%
+\section{Identify the fish consumption pattern and
+contribution}\label{identify-the-fish-consumption-pattern-and-contribution}}
+
 \hypertarget{number-of-children-in-relevant-divisions}{%
 \subsubsection{Number of children in relevant
 divisions}\label{number-of-children-in-relevant-divisions}}
@@ -1050,13 +1062,13 @@ divisions}\label{number-of-children-in-relevant-divisions}}
 \NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Division)) }\SpecialCharTok{+}
 \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
-\FunctionTok{ylab}\NormalTok{(}\StringTok{"number of children"}\NormalTok{) }\SpecialCharTok{+}
-\FunctionTok{xlab}\NormalTok{(}\StringTok{"grama niladhari division"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{ylab}\NormalTok{(}\StringTok{"Number of children"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{xlab}\NormalTok{(}\StringTok{"Grama niladhari division"}\NormalTok{) }\SpecialCharTok{+}
 \FunctionTok{coord\_flip}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-12-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1064,9 +1076,9 @@ divisions}\label{number-of-children-in-relevant-divisions}}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{comparison-between-male-and-female-students}{%
+\hypertarget{comparison-between-male-and-female-children}{%
 \subsubsection{Comparison between Male and Female
-students}\label{comparison-between-male-and-female-students}}
+children}\label{comparison-between-male-and-female-children}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1075,12 +1087,12 @@ students}\label{comparison-between-male-and-female-students}}
 \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
 \FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"Gender"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{)) }\SpecialCharTok{+}
 
-\FunctionTok{ylab}\NormalTok{(}\StringTok{"number of children"}\NormalTok{) }\SpecialCharTok{+}
-\FunctionTok{theme\_classic}\NormalTok{()}
+\FunctionTok{ylab}\NormalTok{(}\StringTok{"Number of children"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-14-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1098,12 +1110,12 @@ students}\label{academic-performance-of-both-male-and-female-students}}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender))}\SpecialCharTok{+}
 \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Academic\_performance), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
 \FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"Gender"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{) ) }\SpecialCharTok{+}
-\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Gender"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{,}\AttributeTok{fill=}\StringTok{\textquotesingle{}Accademic\_performance\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Gender"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}Accademic\_performance\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
 \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-16-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-15-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1121,8 +1133,24 @@ divisions}\label{sea-food-availability-of-the-divisions}}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ seafood\_availability))}\SpecialCharTok{+}
 \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Division), }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
 \FunctionTok{scale\_x\_discrete}\NormalTok{(}\StringTok{"seafood\_availability"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{,}\StringTok{"No"}\NormalTok{,}\StringTok{"Maybe"}\NormalTok{,}\StringTok{"Not mentioned"}\NormalTok{) ) }\SpecialCharTok{+}
-\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"seafood\_availability"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{,}\AttributeTok{fill=}\StringTok{\textquotesingle{}Division\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"seafood\_availability"}\NormalTok{, }\AttributeTok{y =} \StringTok{"count"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}Division\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
 \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\hypertarget{sea-food-availability}{%
+\subsubsection{Sea food availability}\label{sea-food-availability}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each state}
+\NormalTok{availability\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(seafood\_availability)}
+
+\CommentTok{\# Create a stacked bar plot}
+\FunctionTok{barplot}\NormalTok{(availability\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(availability\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"Availabilty"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Sea food availability of this division"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1135,7 +1163,7 @@ division}\label{fish-type-according-to-the-division}}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Omit the data who didn\textquotesingle{}t mentioned the fish type that contains in their divisions}
-\NormalTok{fish\_consumption\_1 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, fish\_type }\SpecialCharTok{!=} \StringTok{"Not mentioned"}\NormalTok{)}
+\NormalTok{fish\_consumption\_1 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, fish\_type }\SpecialCharTok{!=} \StringTok{"Not mentioned"}\NormalTok{) }
                     \FunctionTok{select}\NormalTok{(fish\_consumption\_1, Division, fish\_type)}
 \end{Highlighting}
 \end{Shaded}
@@ -1746,7 +1774,7 @@ Weight}\label{the-relationship-between-age-and-weight}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#eliminate the data who not mentioned their weights}
+\CommentTok{\#Eliminate the data who not mentioned their weights}
 \NormalTok{fish\_consumption\_2 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(fish\_consumption, Weight }\SpecialCharTok{!=} \StringTok{"not mentioned"}\NormalTok{)}
                          \FunctionTok{select}\NormalTok{(fish\_consumption\_2, Age, Weight)}
 \end{Highlighting}
@@ -2145,37 +2173,408 @@ fish}\label{eat-or-not-freshwater-fish}}
 
 \includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-22-1.pdf}
 
-\hypertarget{sea-food-availability}{%
-\subsubsection{Sea food availability}\label{sea-food-availability}}
+\hypertarget{reason-to-include}{%
+\subsubsection{Reason to include}\label{reason-to-include}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Calculate the frequencies of each state}
-\NormalTok{availability\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(seafood\_availability)}
+\CommentTok{\# Calculate the frequencies of each reason to prefer}
+\NormalTok{reason\_to\_include\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(reason\_to\_include)}
 
-\CommentTok{\# Create a stacked bar plot}
-\FunctionTok{barplot}\NormalTok{(availability\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(availability\_counts)), }
-        \AttributeTok{xlab =} \StringTok{"Availabilty"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Sea food availability of this division"}\NormalTok{)}
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(reason\_to\_include\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(reason\_to\_include\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"child\textquotesingle{}s prefer"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Reason to include freshwater fish"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-23-1.pdf}
 
-\hypertarget{sea-food-buying-places}{%
-\subsubsection{Sea food buying places}\label{sea-food-buying-places}}
+\hypertarget{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}{%
+\subsubsection{Amount of freshwater fish consumed change over the last 3
+years}\label{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Calculate the frequencies of each buying place}
-\NormalTok{buying\_place\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(buying\_place)}
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(consumption\_changing)}
 
-\CommentTok{\# Create a bar plot}
-\FunctionTok{barplot}\NormalTok{(buying\_place\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(buying\_place\_counts)), }
-        \AttributeTok{xlab =} \StringTok{"Buying Place"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Buying Places of Seafood"}\NormalTok{)}
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ consumption\_changing)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Changes of consumption"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Amount of freshwater fish consumed change over the last 3 years"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\hypertarget{limitation-of-the-fish-consumption}{%
+\subsubsection{Limitation of the fish
+consumption}\label{limitation-of-the-fish-consumption}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(limit\_the\_consumption)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\hypertarget{time-period-that-are-freshwater-fish-eating}{%
+\subsubsection{Time period that are freshwater fish
+eating}\label{time-period-that-are-freshwater-fish-eating}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(time\_range, time\_range, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Reason\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\hypertarget{average-freshwater-fish-consumption-vs-time-range}{%
+\subsubsection{Average freshwater fish consumption vs Time
+range}\label{average-freshwater-fish-consumption-vs-time-range}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{time\_range, fish\_consumption}\SpecialCharTok{$}\NormalTok{avg\_amount)}
+\FunctionTok{mosaicplot}\NormalTok{(counts, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Avarage amount per day\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Avarage freshwater fish consumption vs Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\hypertarget{number-of-freshwater-fish-pieces-foe-one-meal}{%
+\subsubsection{Number of freshwater fish pieces foe one
+meal}\label{number-of-freshwater-fish-pieces-foe-one-meal}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each state}
+\NormalTok{pieces }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(num\_of\_pieces)}
+
+\CommentTok{\# Create a stacked bar plot}
+\FunctionTok{barplot}\NormalTok{(pieces, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(pieces)), }
+        \AttributeTok{xlab =} \StringTok{"Number of pieces"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Number of freshwater fish pieces"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\hypertarget{most-popular-preparing-way-among-the-children}{%
+\subsubsection{Most popular preparing way among the
+children}\label{most-popular-preparing-way-among-the-children}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each preparing way}
+\NormalTok{preparing\_way\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(preparing\_way)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(preparing\_way\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(preparing\_way\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"child\textquotesingle{}s prefer"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Frequency"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Most popular preparing type among students"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\hypertarget{usually-purchase-fish-type}{%
+\subsubsection{Usually purchase fish
+type}\label{usually-purchase-fish-type}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Tilapia\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_1 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Tilapia)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_1 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_1)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_1), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Korali\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_2 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Korali)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_2 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_2)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_2), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Hunga\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_3 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Hunga)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_3 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_3)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_3), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Loolla\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_4 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Loolla)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_4 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_4)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_4), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Pethiya\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_5 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Pethiya)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_5 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_5)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_5), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Aandha\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_6 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Aandha)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_6 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_6)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_6), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Kawayya\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_7 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Kawayya)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_7 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_7)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_7), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Ankutta\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_8 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Ankutta)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_8 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_8)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_8), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Magura\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_9 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Magura)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_9 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_9)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_9), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-9.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Kanradu.issa\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_10 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Kanradu.issa)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_10 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_10)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_10), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+
+
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Crap.spp\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_11 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Kanradu.issa)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_11 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_11)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_11), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-10.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Other\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Create a list of values for each category}
+\NormalTok{values\_12 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(amount\_permonth\_Other)}
+
+\CommentTok{\# Calculate the percentages}
+\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values\_12 }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values\_12)}
+\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add the percentages to the bars}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values\_12), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-11.pdf}
+
+\hypertarget{purchased-processed-freshwater-fish-product}{%
+\subsubsection{Purchased processed freshwater fish
+product}\label{purchased-processed-freshwater-fish-product}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Processed dried fish\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(processed\_dried\_fish, processed\_dried\_fish, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}lightpink\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}processed dried fish\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Processed smoked fish\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(processed\_smoked\_fish, processed\_smoked\_fish, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}lightgreen\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}processed smoked fish\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-32-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#Processed other fish\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(processed\_other, processed\_other, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}lightblue\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}processed other fish\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-32-3.pdf}
+
+\hypertarget{animal-protein-type}{%
+\subsubsection{Animal protein type}\label{animal-protein-type}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fish\_consumption }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ animal\_protein)) }\SpecialCharTok{+}
+\FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+\FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{xlab}\NormalTok{(}\StringTok{"Type of animal protein"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{coord\_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-33-1.pdf}
 
 \hypertarget{allergy-distribution}{%
 \subsubsection{Allergy distribution}\label{allergy-distribution}}
@@ -2191,7 +2590,7 @@ fish}\label{eat-or-not-freshwater-fish}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-25-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-34-1.pdf}
 
 \hypertarget{identify-the-allergy-species}{%
 \subsubsection{Identify the Allergy
@@ -2311,34 +2710,21 @@ Species}\label{identify-the-allergy-species}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-28-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-37-1.pdf}
 
-\hypertarget{reasons}{%
-\subsubsection{Reasons}\label{reasons}}
+\hypertarget{reasons-to-dislike}{%
+\subsubsection{Reasons to dislike}\label{reasons-to-dislike}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(reason, reason, }\ControlFlowTok{function}\NormalTok{(x)}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(x)))) }\SpecialCharTok{+}
   \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}pink\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Reason\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Reasons to dislike\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{guide =} \FunctionTok{guide\_axis}\NormalTok{(}\AttributeTok{n.dodge=}\DecValTok{5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-29-1.pdf}
-
-\hypertarget{avarage-freshwater-fish-consumption-vs-time-range}{%
-\subsubsection{Avarage freshwater fish consumption vs Time
-range}\label{avarage-freshwater-fish-consumption-vs-time-range}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{time\_range, fish\_consumption}\SpecialCharTok{$}\NormalTok{avg\_amount)}
-\FunctionTok{mosaicplot}\NormalTok{(counts, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Avarage amount per day\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Avarage freshwater fish consumption vs Time range\textquotesingle{}}\NormalTok{, }\AttributeTok{col=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-30-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 \hypertarget{why-does-the-child-prefer-freshwater-fish}{%
 \subsubsection{Why does the child prefer freshwater fish
@@ -2355,47 +2741,11 @@ range}\label{avarage-freshwater-fish-consumption-vs-time-range}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-39-1.pdf}
 
-\hypertarget{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}{%
-\subsubsection{Amount of freshwater fish consumed change over the last 3
-years}\label{amount-of-freshwater-fish-consumed-change-over-the-last-3-years}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(fish\_consumption, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ consumption\_changing)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Changes of consumption"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Amount of freshwater fish consumed change over the last 3 years"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-32-1.pdf}
-
-\hypertarget{amount-of-freshwater-fish-consumed-change-over-the-last-3-years-1}{%
-\subsubsection{Amount of freshwater fish consumed change over the last 3
-years}\label{amount-of-freshwater-fish-consumed-change-over-the-last-3-years-1}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Create a list of values for each category}
-\NormalTok{values }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(consumption\_changing)}
-
-\CommentTok{\# Calculate the percentages}
-\NormalTok{percentages }\OtherTok{=} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ values }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(values)}
-\NormalTok{percentages }\OtherTok{=} \FunctionTok{round}\NormalTok{(percentages, }\DecValTok{2}\NormalTok{)}
-
-\CommentTok{\# Add the percentages to the bars}
-\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\FunctionTok{barplot}\NormalTok{(values), }\AttributeTok{y=}\NormalTok{percentages, }\AttributeTok{labels=}\FunctionTok{paste0}\NormalTok{(percentages, }\StringTok{"\%"}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.5}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-33-1.pdf}
-
-\hypertarget{average-freshwater-fish-consumption-vs-time-range}{%
+\hypertarget{average-freshwater-fish-consumption-vs-time-range-1}{%
 \subsubsection{Average freshwater fish consumption vs Time
-range}\label{average-freshwater-fish-consumption-vs-time-range}}
+range}\label{average-freshwater-fish-consumption-vs-time-range-1}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2405,11 +2755,11 @@ range}\label{average-freshwater-fish-consumption-vs-time-range}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-34-1.pdf}
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-40-1.pdf}
 
-\hypertarget{decremented-of-the-fish-consumption-and-reasons}{%
-\subsubsection{Decremented of the fish consumption and
-reasons}\label{decremented-of-the-fish-consumption-and-reasons}}
+\hypertarget{decrement-of-the-fish-consumption-and-reasons}{%
+\subsubsection{Decrement of the fish consumption and
+reasons}\label{decrement-of-the-fish-consumption-and-reasons}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2682,9 +3032,9 @@ reasons}\label{decremented-of-the-fish-consumption-and-reasons}}
 ##   Decreased                  1
 \end{verbatim}
 
-\hypertarget{incremented-of-the-fish-consumption-and-reasons}{%
-\subsubsection{Incremented of the fish consumption and
-reasons}\label{incremented-of-the-fish-consumption-and-reasons}}
+\hypertarget{increment-of-the-fish-consumption-and-reasons}{%
+\subsubsection{Increment of the fish consumption and
+reasons}\label{increment-of-the-fish-consumption-and-reasons}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2694,36 +3044,36 @@ reasons}\label{incremented-of-the-fish-consumption-and-reasons}}
 \end{Shaded}
 
 \begin{verbatim}
-##    consumption_changing                         reason_to_change
-## 1             Increased                                         
-## 2             Increased                       Readily available 
-## 3             Increased                                         
-## 4             Increased                                         
-## 5             Increased   Preference of the child has increased 
-## 6             Increased                                         
-## 7             Increased                                freshness
-## 8             Increased                                Nutrients
-## 9             Increased                                         
-## 10            Increased                                         
-## 11            Increased                                         
-## 12            Increased                                         
-## 13            Increased                                         
-## 14            Increased                                         
-## 15            Increased                                         
-## 16            Increased                        High consumption 
-## 17            Increased  The number of family members increased 
-## 18            Increased                     Change of residence 
-## 19            Increased                                         
-## 20            Increased   The number of family members increased
-## 21            Increased the number of family members iincreased 
-## 22            Increased                                         
-## 23            Increased                                         
-## 24            Increased                                         
-## 25            Increased   Preference of the child has increased 
-## 26            Increased                       Readily available 
-## 27            Increased                                         
-## 28            Increased                                         
-## 29            Increased   Preference of the child has increased 
+##    consumption_changing                        reason_to_change
+## 1             Increased                                        
+## 2             Increased                      Readily available 
+## 3             Increased                                        
+## 4             Increased                                        
+## 5             Increased  Preference of the child has increased 
+## 6             Increased                                        
+## 7             Increased                               freshness
+## 8             Increased                               Nutrients
+## 9             Increased                                        
+## 10            Increased                                        
+## 11            Increased                                        
+## 12            Increased                                        
+## 13            Increased                                        
+## 14            Increased                                        
+## 15            Increased                                        
+## 16            Increased                       High consumption 
+## 17            Increased The number of family members increased 
+## 18            Increased                    Change of residence 
+## 19            Increased                                        
+## 20            Increased The number of family members increased 
+## 21            Increased The number of family members increased 
+## 22            Increased                                        
+## 23            Increased                                        
+## 24            Increased                                        
+## 25            Increased  Preference of the child has increased 
+## 26            Increased                      Readily available 
+## 27            Increased                                        
+## 28            Increased                                        
+## 29            Increased  Preference of the child has increased 
 ## 30            Increased
 \end{verbatim}
 
@@ -2742,32 +3092,66 @@ reasons}\label{incremented-of-the-fish-consumption-and-reasons}}
 ##             Preference of the child has increased  Readily available 
 ##   Increased                                      3                  2
 ##            
-##             the number of family members iincreased 
-##   Increased                                        1
-##            
-##             The number of family members increased
-##   Increased                                      1
-##            
 ##             The number of family members increased 
-##   Increased                                       1
+##   Increased                                       3
 \end{verbatim}
 
-\hypertarget{section}{%
-\subsubsection{}\label{section}}
-
-Most popular cooking type among students
+\hypertarget{relationship-between-some-variables}{%
+\subsubsection{Relationship between some
+variables}\label{relationship-between-some-variables}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Calculate the frequencies of each preparing way}
-\NormalTok{preparing\_way\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(preparing\_way)}
+\DocumentationTok{\#\#Here we are going to check the significance relationship of two variables by considering null hypothesis as "There is no any relationship between two variables" at 5\% significance level}
 
-\CommentTok{\# Create a bar plot}
-\FunctionTok{barplot}\NormalTok{(preparing\_way\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(preparing\_way\_counts)), }
-        \AttributeTok{xlab =} \StringTok{"child\textquotesingle{}s prefer"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Frequency"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Most popular preparing type among students"}\NormalTok{)}
+\FunctionTok{fisher.test}\NormalTok{(}\FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{seafood\_availability,fish\_consumption}\SpecialCharTok{$}\NormalTok{eat\_freshwater\_fish))}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-37-1.pdf}
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  table(fish_consumption$seafood_availability, fish_consumption$eat_freshwater_fish)
+## p-value = 0.2878
+## alternative hypothesis: two.sided
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fisher.test}\NormalTok{(}\FunctionTok{table}\NormalTok{(fish\_consumption}\SpecialCharTok{$}\NormalTok{Academic\_performance,fish\_consumption}\SpecialCharTok{$}\NormalTok{eat\_freshwater\_fish))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  table(fish_consumption$Academic_performance, fish_consumption$eat_freshwater_fish)
+## p-value = 0.177
+## alternative hypothesis: two.sided
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#Since two of the p{-}values \textgreater{} 0.05, we don\textquotesingle{}t have enough evidence to say that there is a significance relationship among those variables. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sea-food-buying-places}{%
+\subsubsection{Sea food buying places}\label{sea-food-buying-places}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the frequencies of each buying place}
+\NormalTok{buying\_place\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(buying\_place)}
+
+\CommentTok{\# Create a bar plot}
+\FunctionTok{barplot}\NormalTok{(buying\_place\_counts, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(buying\_place\_counts)), }
+        \AttributeTok{xlab =} \StringTok{"Buying Place"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Buying Places of Seafood"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{fish_counsumption_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 \end{document}
