@@ -258,7 +258,7 @@ pie(counts, labels = paste(names(counts), "(", counts, ")"),
 
 ```
 
-## Reason to include freshwater fish into meal 
+## Reason to include freshwater fish into meal
 
 ```{r}
 # Calculate the frequencies of each reason to prefer
@@ -657,4 +657,35 @@ buying_place_counts <- table(buying_place)
 # Create a bar plot
 barplot(buying_place_counts, col = rainbow(length(buying_place_counts)), 
         xlab = "Buying Place", ylab = "Count", main = "Buying Places of Seafood")
+```
+
+# Quantity of fish consumed by children
+
+```{r}
+
+##Convert dataset as data frame in order to add new coloum
+data <- data.frame(fish_consumption)
+head(data)
+
+
+##Assign values for each category as follows
+data$num_of_pieces<-c("1"=1, "2" = 2, "3" = 3, "More than 3" = 4)[data$num_of_pieces]
+
+data$time_range<-c("Twice a week"=1, "Every few months" = 2, "3-4 times a week" = 3, "Once a week" = 4, "Daily" = 5)[data$time_range]
+
+data$avg_amount<-c("One meal"=1, "Two meals" = 2)[data$avg_amount]
+
+
+##Set their structure as numeric
+data$num_of_pieces <- as.numeric(data$num_of_pieces)
+data$time_range <- as.numeric(data$time_range)
+data$avg_amount <- as.numeric(data$avg_amount)
+
+##Creat new variable called "amount_g" by taking the weight of piece of freshwater fish as 48.5g
+amount_g <- data$time_range * data$avg_amount * data$avg_amount * 48.5
+
+
+##Add new variable to new data frame called "data_1"
+data_1 <- cbind(data, amount_g)
+data_1
 ```
